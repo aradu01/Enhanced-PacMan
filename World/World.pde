@@ -81,8 +81,6 @@ public class PacMan {
 */
 
 public void draw() {
-  
-  
   for (Square[] row: game) {
     for (Square block: row) {
       // System.out.println(block.xcor() + " " + block.ycor());
@@ -95,9 +93,31 @@ public void draw() {
   fill(255, 255, 0);
   arc(xPos, yPos, 20, 20, QUARTER_PI, TWO_PI - QUARTER_PI);
   
-  xPos += xspeed;
-  yPos += yspeed;
+  if (xPos == 30 && xspeed < 0) {
+    xspeed = 0;
+    yPos += yspeed;
+  }
   
+  else if (xPos == 570 && xspeed > 0) {
+    xspeed = 0;
+    yPos += yspeed;
+  }
+  
+  else if (yPos == 30 && yspeed < 0) {
+    xPos += xspeed;
+    yspeed = 0;
+  }
+  
+  else if (yPos == 570 && yspeed > 0) {
+    xPos += xspeed;
+    yspeed = 0;
+  }
+  
+  else {
+    xPos += xspeed;
+    yPos += yspeed;
+  }
+ 
   // System.out.println("xPos: " + xPos + " yPos: " + yPos);
 }
 
@@ -121,4 +141,5 @@ public void keyPressed() {
     xspeed = SPEED;
     yspeed = 0;
   }
+
 }
