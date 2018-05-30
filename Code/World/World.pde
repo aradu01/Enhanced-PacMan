@@ -80,7 +80,11 @@ public class PacMan {
 }
 */
 
-public void draw() {
+private int lower = QUARTER_PI;
+private int upper = TWO_PI - QUARTER_PI;
+private int increment = 0.1;
+
+public void draw() {  
   for (Square[] row: game) {
     for (Square block: row) {
       // System.out.println(block.xcor() + " " + block.ycor());
@@ -91,7 +95,25 @@ public void draw() {
   }
   
   fill(255, 255, 0);
-  arc(xPos, yPos, 20, 20, QUARTER_PI, TWO_PI - QUARTER_PI);
+  arc(xPos, yPos, 20, 20, lower, upper);
+  
+  if (upper > TWO_PI) {
+      upper = TWO_PI - increment;
+      // lower = TWO_PI + increment;
+      increment *= -1;
+
+  }
+  
+  else if (lower > QUARTER_PI) {
+      upper = TWO_PI - QUARTER_PI - increment;
+      lower = QUARTER_PI + increment;
+      increment *= -1;
+  }
+  
+  else {
+      lower -= increment;
+      upper += increment;
+  }
   
   if (xPos == 30 && xspeed < 0) {
     xspeed = 0;
