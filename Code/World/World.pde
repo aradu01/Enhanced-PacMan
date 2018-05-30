@@ -1,8 +1,4 @@
-import java.io.*;
-import java.io.FileNotFoundException;
-import java.util.*;
 Square[][] game;
-Maze maze;
 final int SPEED = 20;
 
 float xPos = 30;
@@ -21,7 +17,7 @@ public void setup() {
       game[row][col] = new Square(row * 20, col * 20, color(0, 0, 255));
     }
   }
-  maze = new Maze("Sample.txt");
+  
   /*
   for (Square[] row: game) {
     for (Square block: row) {
@@ -32,32 +28,7 @@ public void setup() {
   }
   */
 }
-public class Maze {
-  String[][] maze;
-  public Maze(String filename){ 
-    String[] temp = loadStrings(filename);
-    int counter = 0;
-    for(int r = 0; r < 30; r++){
-      for(int c = 0; c < 30; c++){
-        maze[r][c] = temp[counter];
-        counter++;
-      }
-    }
-  }
-  public void setUpMaze(){
-    for(int r = 0; r < 30; r++){
-      for(int c = 0; c < 30; c++){
-        if(maze[r][c].equals("#")){
-          game[r][c].setColor(color(255, 0, 0));
-        }
-        else{
-          game[r][c].setColor(color(0, 255, 0));
-      }
-    }
-    }
-  }
-}
-    
+
 public class Square {
   int x;
   int y;
@@ -80,9 +51,6 @@ public class Square {
   public int getColor() {
     return c;
   }
-  public void setColor(color c){
-    this.c = c;
-  }
 }
 
 /*
@@ -92,7 +60,6 @@ public class PacMan {
   float xspeed = 20;
   float yspeed = 20;
   
-
   public void moveUp() {
     yPos -= yspeed;
   }
@@ -108,7 +75,6 @@ public class PacMan {
   public void moveRight() {
     xPos += xspeed;
   }
-
 }
 */
 
@@ -117,7 +83,6 @@ private float upper = TWO_PI - QUARTER_PI;
 private float increment = 0.1;
 
 public void draw() {  
-  maze.setUpMaze();
   for (Square[] row: game) {
     for (Square block: row) {
       // System.out.println(block.xcor() + " " + block.ycor());
@@ -126,6 +91,7 @@ public void draw() {
       rect(block.xcor(), block.ycor(), 20, 20);
     }
   }
+  
   fill(255, 255, 0);
   arc(xPos, yPos, 20, 20, lower, upper);
   
