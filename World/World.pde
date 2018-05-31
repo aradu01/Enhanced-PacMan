@@ -1,123 +1,49 @@
 Square[][] game;
-final int SPEED = 20;
+PacMan a = new PacMan();
 
-float xPos = 30;
-float yPos = 30;
-float xspeed = SPEED;
-float yspeed = 0;
+public final int SPEED = 20;
+
+public float xPos = 30;
+public float yPos = 30;
+public float xspeed = SPEED;
+public float yspeed = 0;
 
 public void setup() {
   size(600, 600);
   frameRate(10);
-  
+
   game = new Square[30][30];
-  
+
   for (int row = 0; row < game.length; row++) {
     for (int col = 0; col < game[row].length; col++) {
       game[row][col] = new Square(row * 20, col * 20, color(0, 0, 255));
     }
   }
-  
+
   /*
   for (Square[] row: game) {
     for (Square block: row) {
-      // System.out.println(block.xcor() + " " + block.ycor());
-      rect(block.xcor(), block.ycor(), 20, 20);
-      fill(block.getColor());
+    // System.out.println(block.xcor() + " " + block.ycor());
+    
+    rect(block.xcor(), block.ycor(), 20, 20);
+    fill(block.getColor());
     }
   }
   */
 }
 
-public class Square {
-  int x;
-  int y;
-  color c;
-  
-  public Square(int xcor, int ycor, color tint) {
-    x = xcor;
-    y = ycor;
-    c = tint;
-  }
-  
-  public int xcor() {
-    return x;
-  }
-  
-  public int ycor() {
-    return y;
-  }
-  
-  public int getColor() {
-    return c;
-  }
-}
-
-/*
-public class PacMan {
-  int x;
-  int y;
-  float xspeed = 20;
-  float yspeed = 20;
-  
-
-  public void moveUp() {
-    yPos -= yspeed;
-  }
-  
-  public void moveDown() {
-    yPos += yspeed;
-  }
-  
-  public void moveLeft() {
-    xPos -= xspeed;
-  }
-  
-  public void moveRight() {
-    xPos += xspeed;
-  }
-
-}
-*/
-
-public void draw() {
+public void draw() {  
   for (Square[] row: game) {
     for (Square block: row) {
       // System.out.println(block.xcor() + " " + block.ycor());
-      
+
       fill(block.getColor());
       rect(block.xcor(), block.ycor(), 20, 20);
     }
   }
   
-  fill(255, 255, 0);
-  arc(xPos, yPos, 20, 20, QUARTER_PI, TWO_PI - QUARTER_PI);
-  
-  if (xPos == 30 && xspeed < 0) {
-    xspeed = 0;
-    yPos += yspeed;
-  }
-  
-  else if (xPos == 570 && xspeed > 0) {
-    xspeed = 0;
-    yPos += yspeed;
-  }
-  
-  else if (yPos == 30 && yspeed < 0) {
-    xPos += xspeed;
-    yspeed = 0;
-  }
-  
-  else if (yPos == 570 && yspeed > 0) {
-    xPos += xspeed;
-    yspeed = 0;
-  }
-  
-  else {
-    xPos += xspeed;
-    yPos += yspeed;
-  }
- 
+  a.setUp();
+
   // System.out.println("xPos: " + xPos + " yPos: " + yPos);
 }
 
@@ -141,5 +67,4 @@ public void keyPressed() {
     xspeed = SPEED;
     yspeed = 0;
   }
-
 }
