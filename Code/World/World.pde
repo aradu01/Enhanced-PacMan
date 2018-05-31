@@ -78,10 +78,10 @@ public class PacMan {
 }
 */
 
-private float lower = QUARTER_PI;
+/*private float lower = QUARTER_PI;
 private float upper = TWO_PI - QUARTER_PI;
 private float increment = 0.1;
-
+*/
 public void draw() {  
   for (Square[] row: game) {
     for (Square block: row) {
@@ -92,7 +92,7 @@ public void draw() {
     }
   }
   
-  fill(255, 255, 0);
+  /*fill(255, 255, 0);
   arc(xPos, yPos, 20, 20, lower, upper);
   
   if (upper > TWO_PI) {
@@ -112,7 +112,8 @@ public void draw() {
       lower -= increment;
       upper += increment;
   }
-  
+  */
+  pac.
   if (xPos == 30 && xspeed < 0) {
     xspeed = 0;
     yPos += yspeed;
