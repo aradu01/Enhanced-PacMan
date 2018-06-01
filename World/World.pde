@@ -60,7 +60,6 @@ public class PacMan {
   float xspeed = 20;
   float yspeed = 20;
   
-
   public void moveUp() {
     yPos -= yspeed;
   }
@@ -76,11 +75,14 @@ public class PacMan {
   public void moveRight() {
     xPos += xspeed;
   }
-
 }
 */
 
-public void draw() {
+private float lower = QUARTER_PI;
+private float upper = TWO_PI - QUARTER_PI;
+private float increment = 0.1;
+
+public void draw() {  
   for (Square[] row: game) {
     for (Square block: row) {
       // System.out.println(block.xcor() + " " + block.ycor());
@@ -91,7 +93,25 @@ public void draw() {
   }
   
   fill(255, 255, 0);
-  arc(xPos, yPos, 20, 20, QUARTER_PI, TWO_PI - QUARTER_PI);
+  arc(xPos, yPos, 20, 20, lower, upper);
+  
+  if (upper > TWO_PI) {
+      upper = TWO_PI - increment;
+      // lower = TWO_PI + increment;
+      increment *= -1;
+
+  }
+  
+  else if (lower > QUARTER_PI) {
+      upper = TWO_PI - QUARTER_PI - increment;
+      lower = QUARTER_PI + increment;
+      increment *= -1;
+  }
+  
+  else {
+      lower -= increment;
+      upper += increment;
+  }
   
   if (xPos == 30 && xspeed < 0) {
     xspeed = 0;
