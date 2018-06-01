@@ -1,6 +1,6 @@
 Square[][] game;
 final int SPEED = 20;
-
+Maze m;
 float xPos = 30;
 float yPos = 30;
 float xspeed = SPEED;
@@ -29,7 +29,10 @@ public void setup() {
   */
 }
 public class Maze{
+  char[][] arr = new char[30][30];
   public Maze(String filename){
+    
+    
 public class Square {
   int x;
   int y;
