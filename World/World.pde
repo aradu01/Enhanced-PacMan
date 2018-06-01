@@ -28,7 +28,8 @@ public void setup() {
   }
   */
 }
-
+public class Maze{
+  public Maze(String filename){
 public class Square {
   int x;
   int y;
