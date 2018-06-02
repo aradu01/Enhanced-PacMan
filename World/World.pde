@@ -1,5 +1,5 @@
-Square[][] game;
-PacMan basis = new PacMan();
+public Square[][] game;
+public PacMan basis = new PacMan();
 
 public final int SPEED = 20;
 
@@ -42,7 +42,7 @@ public void draw() {
     }
   }
   
-  basis.setUp();
+  basis.pacManSetUp();
 
   // System.out.println("xPos: " + xPos + " yPos: " + yPos);
 }
@@ -51,20 +51,28 @@ public void keyPressed() {
   if (key == 'w' && yPos > 10) {
     xspeed = 0;
     yspeed = -SPEED;
+    
+    basis.changeDirection(-HALF_PI);
   }
   
   else if (key == 'a' && xPos > 10) {
     xspeed = -SPEED;
     yspeed = 0;
+    
+    basis.changeDirection(PI);
   }
   
   else if (key == 's' && yPos < 590) {
     xspeed = 0;
     yspeed = SPEED;
+    
+    basis.changeDirection(HALF_PI);
   }
   
   else if (key == 'd' && xPos < 590) {
     xspeed = SPEED;
     yspeed = 0;
+    
+    basis.changeDirection(0);
   }
 }
