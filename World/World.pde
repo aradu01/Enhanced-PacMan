@@ -1,6 +1,8 @@
+//PFont f;
 public Maze mboy;
 public Square[][] game;
 public PacMan basis = new PacMan();
+public String[] temp;
 
 public final int SPEED = 20;
 
@@ -12,13 +14,13 @@ public float yspeed = 0;
 public void setup() {
   size(600, 600);
   frameRate(10);
-
   game = new Square[30][30];
   mboy = new Maze("Sample.txt");
   mboy.mazeSetUp(game);
+ // f = createFont("Arial", 16, true);
+ // temp = loadStrings("Sample.txt");
 
-
-  /*
+  
   for (Square[] row: game) {
     for (Square block: row) {
     // System.out.println(block.xcor() + " " + block.ycor());
@@ -27,7 +29,7 @@ public void setup() {
     fill(block.getColor());
     }
   }
-  */
+ 
 }
 
 public void draw() {  
@@ -41,6 +43,10 @@ public void draw() {
   }
   basis.pacManSetUp();
   // System.out.println("xPos: " + xPos + " yPos: " + yPos);
+   /*background(255,0,0);
+   textFont(f, 16);
+   fill(255);
+   text(temp[0], 10, 100);*/
 }
 
 public void keyPressed() {
