@@ -13,10 +13,10 @@ public class Maze{
     for(int r = 0; r < game.length; r++){
       for(int c = 0; c < game[r].length; c++){
         if(arr[r][c] == '#'){
-          game[r][c] = new Square(r * 20, c * 20, color(0, 255, 0));
+          game[c][r] = new Square(c * 20, r * 20, color(0, 255, 0));
         }
         else{
-          game[r][c] = new Square(r * 20, c * 20, color(0, 0, 255));
+          game[c][r] = new Square(c * 20, r * 20, color(0, 0, 255));
         }
       }
 }

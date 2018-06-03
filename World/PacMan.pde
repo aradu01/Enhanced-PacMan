@@ -23,15 +23,26 @@ public class PacMan {
   public void changeDirection(float amount) {
       rotating = amount;
   }
-  public void checkOthers(ArrayList<Square> squares){
+ /* public void checkOthers(ArrayList<Square> squares){
     for(Square s: squares){
-      if(dist(xPos,yPos, s.xcor(), s.ycor()) < 20 && s.getColor() == color(0, 255, 0)){
+      if(dist(xPos, yPos, s.getActX(), s.getActY()) < 30)
+      //&& s.getColor() == color(0, 255, 0))
+      {
          c = color(255, 0, 0);
       }
       else{
         c = color(255, 255, 0);
   }
   }
+  }*/
+  public void checkOthers(Square[][] game){
+    for(int r = 0; r < game.length; r++){
+      for(int c = 0; c < game[0].length; c++){
+        if(dist(xPos, yPos, game[r][c].xcor(), game[r][c].ycor()) <= 20 && game[r][c].getColor() == color(0, 255,0)){
+          c = color(255, 0, 0);
+        }
+      }
+    }
   }
   private float lower = QUARTER_PI + rotating;
   private float upper = TWO_PI - QUARTER_PI + rotating;

@@ -49,7 +49,7 @@ public void draw() {
     }
   }
   basis.pacManSetUp();
-  basis.checkOthers(squarr);
+  //basis.checkOthers(game);
   // System.out.println("xPos: " + xPos + " yPos: " + yPos);
    /*background(255,0,0);
    textFont(f, 16);

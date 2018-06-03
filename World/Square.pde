@@ -1,5 +1,5 @@
 public class Square {
-  
+  float xactual, yactual;
   int x;
   int y;
   color c;
@@ -8,6 +8,8 @@ public class Square {
     x = xcor;
     y = ycor;
     c = tint;
+    xactual = x * 20;
+    yactual = y * 20;
   }
 
   public int xcor() {
@@ -21,5 +23,10 @@ public class Square {
   public color getColor() {
     return c;
   }
-
+  public float getActX(){
+    return xactual;
+  }
+  public float getActY(){
+    return yactual;
+  }
 }
