@@ -2,16 +2,12 @@ public char[][] arr;
 public class Maze{
   public Maze(String filename){
     String[] temp = loadStrings(filename);
-    int rcounter = 0;
-    int ccounter = 0;
-    for(String s : temp){
-      if(ccounter >= s.length()){
-        rcounter++;
-        ccounter = 0;
-      }
-      arr[rcounter][ccounter] = s.charAt(ccounter);
-      ccounter++;
+    arr = new char[temp.length][temp[0].length()];
+    for(int r = 0; r < temp.length; r++){
+      for(int c = 0; c < temp[0].length(); c++){
+      arr[r][c] = temp[r].charAt(c);
     }
+  }
   }
   public void mazeSetUp(Square[][] game){
     for(int r = 0; r < game.length; r++){
