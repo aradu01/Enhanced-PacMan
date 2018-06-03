@@ -18,7 +18,7 @@ public class Square {
     return y;
   }
 
-  public int getColor() {
+  public color getColor() {
     return c;
   }
 

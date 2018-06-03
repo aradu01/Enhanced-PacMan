@@ -1,7 +1,9 @@
 //PFont f;
+import java.util.*;
 public Maze mboy;
 public Square[][] game;
 public PacMan basis = new PacMan();
+public ArrayList<Square> squarr = new ArrayList<Square>();
 public String[] temp;
 
 public final int SPEED = 20;
@@ -19,6 +21,11 @@ public void setup() {
   mboy.mazeSetUp(game);
  // f = createFont("Arial", 16, true);
  // temp = loadStrings("Sample.txt");
+  for(int r = 0; r < game.length; r++){
+    for(int c = 0; c < game[0].length; c++){
+      squarr.add(game[r][c]);
+    }
+  }
 
   
   for (Square[] row: game) {
@@ -42,6 +49,7 @@ public void draw() {
     }
   }
   basis.pacManSetUp();
+  basis.checkOthers(squarr);
   // System.out.println("xPos: " + xPos + " yPos: " + yPos);
    /*background(255,0,0);
    textFont(f, 16);
