@@ -1,3 +1,4 @@
+public Maze mboy;
 public Square[][] game;
 public PacMan basis = new PacMan();
 
@@ -13,12 +14,9 @@ public void setup() {
   frameRate(10);
 
   game = new Square[30][30];
+  mboy = new Maze("Sample.txt");
+  mboy.mazeSetUp(game);
 
-  for (int row = 0; row < game.length; row++) {
-    for (int col = 0; col < game[row].length; col++) {
-      game[row][col] = new Square(row * 20, col * 20, color(0, 0, 255));
-    }
-  }
 
   /*
   for (Square[] row: game) {
@@ -41,9 +39,7 @@ public void draw() {
       rect(block.xcor(), block.ycor(), 20, 20);
     }
   }
-  
   basis.pacManSetUp();
-
   // System.out.println("xPos: " + xPos + " yPos: " + yPos);
 }
 
@@ -75,4 +71,5 @@ public void keyPressed() {
     
     basis.changeDirection(0);
   }
+
 }
