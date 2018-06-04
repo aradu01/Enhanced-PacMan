@@ -32,9 +32,14 @@ public void setup() {
   for (Square[] row: game) {
     for (Square block: row) {
     // System.out.println(block.xcor() + " " + block.ycor());
-    
+    if(block.getRect()){
     rect(block.xcor(), block.ycor(), 20, 20);
     fill(block.getColor());
+    }
+    else{
+      ellipse(block.xcor(), block.ycor(), 5, 5);
+      fill(block.getColor());
+  }
     }
   }
  
