@@ -33,7 +33,7 @@ public void setup() {
     for (Square block: row) {
     // System.out.println(block.xcor() + " " + block.ycor());
     if(block.getRect()){
-    rect(block.xcor(), block.ycor()-20, 20, 20);
+    rect(block.xcor(), block.ycor(), 20, 20);
     fill(block.getColor());
     }
     else{
@@ -54,7 +54,7 @@ public void draw() {
     rect(block.xcor(), block.ycor(), 20, 20);
     }
     else{
-      ellipse(block.xcor()+8, block.ycor()+8 , 5, 5);
+      ellipse(block.xcor()+10, block.ycor()+10 , 5, 5);
   }
   fill(block.getColor());
     }

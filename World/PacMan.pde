@@ -20,7 +20,7 @@ public class PacMan {
   
   private float rotating = 0.0;
   
-  public void changeDirection(float amount) {
+  public void changeDirection(int amount) {
       rotating = amount;
   }
  /* public void checkOthers(ArrayList<Square> squares){
@@ -75,11 +75,14 @@ public class PacMan {
   
     if (xPos == 30 && xspeed < 0) {
       xspeed = 0;
+      if(game[(int)xPos][(int)yPos + (int)yspeed].getColor() != color(0,0,255)){
       yPos += yspeed;
+      }
     }
     
     else if (xPos == 570 && xspeed > 0) {
       xspeed = 0;
+      if(game[(int)xPos][(int)xPos + (int)xspeed].getColor() != color(0,0,255)){
       yPos += yspeed;
     }
     
