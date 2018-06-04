@@ -1,5 +1,5 @@
-//PFont f;
 import java.util.*;
+
 public Maze mboy;
 public Square[][] game;
 public PacMan basis = new PacMan();
@@ -19,14 +19,15 @@ public void setup() {
   game = new Square[30][30];
   mboy = new Maze("Sample.txt");
   mboy.mazeSetUp(game);
+  
  // f = createFont("Arial", 16, true);
  // temp = loadStrings("Sample.txt");
+ 
   for(int r = 0; r < game.length; r++){
     for(int c = 0; c < game[0].length; c++){
       squarr.add(game[r][c]);
     }
   }
-
   
   for (Square[] row: game) {
     for (Square block: row) {
@@ -48,10 +49,12 @@ public void draw() {
       rect(block.xcor(), block.ycor(), 20, 20);
     }
   }
+  
   basis.pacManSetUp();
   //basis.checkOthers(game);
   // System.out.println("xPos: " + xPos + " yPos: " + yPos);
-   /*background(255,0,0);
+  /*
+   background(255,0,0);
    textFont(f, 16);
    fill(255);
    text(temp[0], 10, 100);*/

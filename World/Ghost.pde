@@ -26,28 +26,28 @@ public class Ghost {
     int[][] answer = new int[4][2];
     
     if (xcor + 1 > 0 && xcor + 1 < game.length && ycor > 0 && ycor < game[0].length) {
-		  if (game[xcor + 1][ycor] != color(0, 255, 0)) {
+		  if (game[xcor + 1][ycor].getColor() != color(0, 255, 0)) {
 		    answer[0][0] = xcor + 1;
         answer[0][1] = ycor;
 		  }
 	  }
 
     if (xcor - 1 > 0 && xcor - 1 < game.length && ycor > 0 && ycor < game[0].length) {
-		  if (game[xcor - 1][ycor] != color(0, 255, 0)) {
+		  if (game[xcor - 1][ycor].getColor() != color(0, 255, 0)) {
 		    answer[0][0] = xcor - 1;
         answer[0][1] = ycor;
 		  }
 	  }
 
     if (xcor > 0 && xcor < game.length && ycor + 1 > 0 && ycor + 1 < game[0].length) {
-		  if (game[xcor][ycor + 1] != color(0, 255, 0)) {
+		  if (game[xcor][ycor + 1].getColor() != color(0, 255, 0)) {
 		    answer[0][0] = xcor;
         answer[0][1] = ycor + 1;
 		  }
 	  }
 
     if (xcor > 0 && xcor < game.length && ycor - 1 > 0 && ycor - 1 < game[0].length) {
-		  if (game[xcor][ycor - 1] != color(0, 255, 0)) {
+		  if (game[xcor][ycor - 1].getColor() != color(0, 255, 0)) {
 		    answer[0][0] = xcor;
         answer[0][1] = ycor - 1;
 		  }
@@ -56,7 +56,7 @@ public class Ghost {
     int counter = 0;
 
     for (int[] element: answer) {
-      if (element[0][0] != 0 && element[0][1] != 0) {
+      if (element[0] != 0 && element[1] != 0) {
         counter++;
       }
     }
@@ -66,7 +66,7 @@ public class Ghost {
     int index = 0;
         
     for (int[] element: answer) {
-      if (element[0][0] != 0 && element[0][1] != 0) {
+      if (element[0] != 0 && element[1] != 0) {
         result[index][0] = element[0];
         result[index][1] = element[1];
                 
