@@ -20,8 +20,9 @@ public class Maze{
         }
         else{
           game[c][r] = new Square(c * 20, r * 20, color(0, 0, 0), true);
-        }
+      //  }
       }
 }
   }
+}
 }

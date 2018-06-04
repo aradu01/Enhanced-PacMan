@@ -33,7 +33,7 @@ public void setup() {
     for (Square block: row) {
     // System.out.println(block.xcor() + " " + block.ycor());
     if(block.getRect()){
-    rect(block.xcor(), block.ycor(), 20, 20);
+    rect(block.xcor(), block.ycor()-20, 20, 20);
     fill(block.getColor());
     }
     else{
@@ -45,13 +45,18 @@ public void setup() {
  
 }
 
-public void draw() {  
-  for (Square[] row: game) {
+public void draw() { 
+  background(0,0,0);
+ for (Square[] row: game) {
     for (Square block: row) {
-      // System.out.println(block.xcor() + " " + block.ycor());
-
-      fill(block.getColor());
-      rect(block.xcor(), block.ycor(), 20, 20);
+    // System.out.println(block.xcor() + " " + block.ycor());
+    if(block.getRect()){
+    rect(block.xcor(), block.ycor(), 20, 20);
+    }
+    else{
+      ellipse(block.xcor()+8, block.ycor()+8 , 5, 5);
+  }
+  fill(block.getColor());
     }
   }
   
