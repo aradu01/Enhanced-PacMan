@@ -4,11 +4,13 @@ public class Ghost {
   private int yPos;
   private color tint;
   
+  /*
   public Ghost(int x, int y, color c) {
     xPos = x;
     yPos = y;
     tint = c;
   }
+  */
   
   public int ghostX() {
     return xPos;

@@ -1,11 +1,11 @@
-public class GreenGhost extends Ghost {
+public int greenX;
+public int greenY;
 
-  private int xPos;
-  private int yPos;
-  private color tint;
+public class GreenGhost extends Ghost {
   
   public GreenGhost() {
-    super(14, 10, color(0, 255, 0));
+    greenX = 14;
+    greenY = 10;
   }
   
 }

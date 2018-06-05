@@ -1,11 +1,11 @@
-public class RedGhost extends Ghost {
+public int redX;
+public int redY;
 
-  private int xPos;
-  private int yPos;
-  private color tint;
+public class RedGhost extends Ghost {
   
   public RedGhost() {
-    super(12, 10, color(255, 0, 0));
+    redX = 12;
+    redY = 10;
   }
   
 }
