@@ -1,5 +1,12 @@
+public float xPos = 30;
+public float yPos = 30;
+public float xspeed = SPEED;
+public float yspeed = 0;
+
 public class PacMan {
+  
   public color c = color(255, 255, 0);
+  
   /*
   public void moveUp() {
     yPos -= yspeed;
@@ -104,6 +111,13 @@ public class PacMan {
     else {
       xPos += xspeed;
       yPos += yspeed;
+    }
+  }
+  
+  public void checkMoves() {
+    if (game[(int) (xPos + xspeed) / 20][(int) (yPos + yspeed) / 20].getColor() == color(0, 0, 255)) {
+      xspeed = 0;
+      yspeed = 0;
     }
   }
 
