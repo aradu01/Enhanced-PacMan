@@ -1,5 +1,7 @@
 import java.util.*;
-
+public GreenGhost G = new GreenGhost();
+public BlueGhost B = new BlueGhost();
+public RedGhost R = new RedGhost();
 public Maze mboy;
 public Square[][] game;
 public PacMan basis = new PacMan();
@@ -12,7 +14,9 @@ public final int SPEED = 20;
 public void setup() {
   size(600, 600);
   frameRate(10);
-  
+  G.set();
+  B.set();
+  R.set();
   game = new Square[30][30];
   mboy = new Maze("Sample.txt");
   mboy.mazeSetUp(game);
@@ -57,7 +61,9 @@ public void draw() {
     }
   }
   }
-  
+  G.set();
+  B.set();
+  R.set();
   basis.pacManSetUp();
   
   // basis.checkOthers(game);

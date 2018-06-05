@@ -10,7 +10,7 @@ public class Ghost {
     tint = c;
   }
   public void set(){
-    ellipse(ghostY(), ghostX(), 10, 10);
+    ellipse(ghostY(), ghostX(), 20, 20);
     fill(ghostColor());
   }
   public int ghostX() {
