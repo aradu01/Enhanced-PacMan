@@ -33,7 +33,7 @@ public void setup() {
     rect(block.xcor(), block.ycor(), 20, 20);
     fill(block.getColor());
     }
-    else{
+    else if (!block.getRect()){
       ellipse(block.xcor(), block.ycor(), 5, 5);
       fill(block.getColor());
     }
@@ -47,10 +47,15 @@ public void draw() {
   for (Square[] row: game) {
     for (Square block: row) {
       // System.out.println(block.xcor() + " " + block.ycor());
-
+      if(block.getRect()){
       fill(block.getColor());
       rect(block.xcor(), block.ycor(), 20, 20);
     }
+    else if (!block.getRect()){
+      fill(block.getColor());
+      ellipse(block.xcor() + 10, block.ycor() + 10, 10, 10);
+    }
+  }
   }
   
   basis.pacManSetUp();
