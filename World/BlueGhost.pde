@@ -1,11 +1,12 @@
 public class BlueGhost extends Ghost {
 
-  private int xPos;
-  private int yPos;
-  private color tint;
+
   
   public BlueGhost() {
-    super(width/2 - 10, height/2, color(0, 0, 255));
+    super(300, 300, color(0, 0, 255));
   }
-  
+  public void set(){
+    ellipse(ghostY(), ghostX(), 20, 20);
+    fill(color(0, 0, 255));
+  }
 }

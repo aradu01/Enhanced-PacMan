@@ -65,6 +65,9 @@ public void draw() {
   B.set();
   R.set();
   basis.pacManSetUp();
+  //G.makeMove();
+  //B.makeMove();
+  //R.makeMove();
   
   // basis.checkOthers(game);
   // System.out.println("xPos: " + xPos + " yPos: " + yPos);

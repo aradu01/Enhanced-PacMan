@@ -1,11 +1,11 @@
 public class GreenGhost extends Ghost {
 
-  private int xPos;
-  private int yPos;
-  private color tint;
-  
+
   public GreenGhost() {
-    super(width/2 + 10, height/2, color(0, 255, 0));
+    super(300, 260, color(0, 255, 0));
   }
-  
+  public void set(){
+    ellipse(ghostY(), ghostX(), 20, 20);
+    fill(color(0, 255, 0));
+  }
 }

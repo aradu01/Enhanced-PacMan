@@ -1,24 +1,21 @@
 public class Ghost {
   
-  private int xPos;
-  private int yPos;
+  private int xP;
+  private int yP;
   private color tint;
   
   public Ghost(int x, int y, color c) {
-    xPos = x;
-    yPos = y;
+    xP = x;
+    yP = y;
     tint = c;
   }
-  public void set(){
-    ellipse(ghostY(), ghostX(), 20, 20);
-    fill(ghostColor());
-  }
+  
   public int ghostX() {
-    return xPos;
+    return xP;
   }
   
   public int ghostY() {
-    return yPos;
+    return yP;
   }
   
   public color ghostColor() {
@@ -81,7 +78,7 @@ public class Ghost {
   }
   
   public void makeMove() {
-    int[][] moves = getMoves(xPos, yPos);
+    int[][] moves = getMoves(xP, yP);
     int value = (int) random(0, moves.length);
     
     xPos += moves[value][0];
