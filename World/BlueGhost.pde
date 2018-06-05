@@ -5,7 +5,7 @@ public class BlueGhost extends Ghost {
   private color tint;
   
   public BlueGhost() {
-    super(10, 10, color(0, 0, 255));
+    super(width/2 - 10, height/2, color(0, 0, 255));
   }
   
 }

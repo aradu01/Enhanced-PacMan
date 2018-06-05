@@ -9,7 +9,10 @@ public class Ghost {
     yPos = y;
     tint = c;
   }
-  
+  public void set(){
+    ellipse(ghostY(), ghostX(), 10, 10);
+    fill(ghostColor());
+  }
   public int ghostX() {
     return xPos;
   }
