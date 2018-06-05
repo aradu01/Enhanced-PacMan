@@ -3,6 +3,7 @@ import java.util.*;
 public Maze mboy;
 public Square[][] game;
 public PacMan basis = new PacMan();
+
 public ArrayList<Square> squarr = new ArrayList<Square>();
 public String[] temp;
 
@@ -16,6 +17,7 @@ public float yspeed = 0;
 public void setup() {
   size(600, 600);
   frameRate(10);
+  
   game = new Square[30][30];
   mboy = new Maze("Sample.txt");
   mboy.mazeSetUp(game);
@@ -65,28 +67,28 @@ public void keyPressed() {
     xspeed = 0;
     yspeed = -SPEED;
     
-    basis.changeDirection(-HALF_PI);
+    // basis.changeDirection(-HALF_PI);
   }
   
   else if (key == 'a' && xPos > 10) {
     xspeed = -SPEED;
     yspeed = 0;
     
-    basis.changeDirection(PI);
+    // basis.changeDirection(PI);
   }
   
   else if (key == 's' && yPos < 590) {
     xspeed = 0;
     yspeed = SPEED;
     
-    basis.changeDirection(HALF_PI);
+    // basis.changeDirection(HALF_PI);
   }
   
   else if (key == 'd' && xPos < 590) {
     xspeed = SPEED;
     yspeed = 0;
     
-    basis.changeDirection(0);
+    // basis.changeDirection(0);
   }
 
 }

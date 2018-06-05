@@ -1,4 +1,5 @@
 public class Square {
+  
   float xactual, yactual;
   int x;
   int y;
@@ -29,4 +30,5 @@ public class Square {
   public float getActY(){
     return yactual;
   }
+  
 }
