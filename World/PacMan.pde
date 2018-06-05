@@ -1,5 +1,12 @@
+public float xPos = 30;
+public float yPos = 30;
+public float xspeed = SPEED;
+public float yspeed = 0;
+
 public class PacMan {
+  
   public color c = color(255, 255, 0);
+  
   /*
   public void moveUp() {
     yPos -= yspeed;
@@ -18,53 +25,61 @@ public class PacMan {
   }
   */
   
+  /*
   private float rotating = 0.0;
   
-  public void changeDirection(int amount) {
+  public void changeDirection(float amount) {
       rotating = amount;
   }
- /* public void checkOthers(ArrayList<Square> squares){
-    for(Square s: squares){
-      if(dist(xPos, yPos, s.getActX(), s.getActY()) < 30)
-      //&& s.getColor() == color(0, 255, 0))
-      {
+  */
+  
+  /*
+  public void checkOthers(ArrayList<Square> squares){
+    for (Square s: squares) {
+      if (dist(xPos, yPos, s.getActX(), s.getActY()) < 30 && s.getColor() == color(0, 255, 0)) {
          c = color(255, 0, 0);
       }
-      else{
+      
+      else {
         c = color(255, 255, 0);
+      }
+    }
   }
-  }
-  }*/
+  */
+  
   public void checkOthers(Square[][] game){
-    for(int r = 0; r < game.length; r++){
-      for(int c = 0; c < game[0].length; c++){
-        if(dist(xPos, yPos, game[r][c].xcor(), game[r][c].ycor()) <= 20 && game[r][c].getColor() == color(0, 255,0)){
+    for (int r = 0; r < game.length; r++) {
+      for (int c = 0; c < game[0].length; c++) {
+        if (dist(xPos, yPos, game[r][c].xcor(), game[r][c].ycor()) <= 20 && game[r][c].getColor() == color(0, 255,0)) {
           c = color(255, 0, 0);
         }
       }
     }
   }
-  private float lower = QUARTER_PI + rotating;
-  private float upper = TWO_PI - QUARTER_PI + rotating;
+  
+  private float lower = QUARTER_PI; // + rotating;
+  private float upper = TWO_PI - QUARTER_PI; // + rotating;
   private float increment = 0.1;
  
   public void pacManSetUp() {
     fill(c);
     arc(xPos, yPos, 20, 20, lower, upper);
+    
+    /*
     if (abs(lower - upper) > PI) {
         lower = upper;
     }
+    */
     
-    
-    if (upper > TWO_PI + rotating) {
-      upper = TWO_PI - increment + rotating;
+    if (upper > TWO_PI) { // + rotating) {
+      upper = TWO_PI - increment; // + rotating;
       // lower = TWO_PI + increment + rotating;
       increment *= -1;
     }
      
-    else if (lower > QUARTER_PI + rotating) {
-      upper = TWO_PI - QUARTER_PI - increment + rotating;
-      lower = QUARTER_PI + increment + rotating;
+    else if (lower > QUARTER_PI) { // + rotating) {
+      upper = TWO_PI - QUARTER_PI - increment; // + rotating;
+      lower = QUARTER_PI + increment; // + rotating;
       increment *= -1;
     }
      
@@ -75,14 +90,11 @@ public class PacMan {
   
     if (xPos == 30 && xspeed < 0) {
       xspeed = 0;
-      if(game[(int)xPos][(int)yPos + (int)yspeed].getColor() != color(0,0,255)){
       yPos += yspeed;
-      }
     }
     
     else if (xPos == 570 && xspeed > 0) {
       xspeed = 0;
-      if(game[(int)xPos][(int)xPos + (int)xspeed].getColor() != color(0,0,255)){
       yPos += yspeed;
     }
     
@@ -99,6 +111,13 @@ public class PacMan {
     else {
       xPos += xspeed;
       yPos += yspeed;
+    }
+  }
+  
+  public void checkMoves() {
+    if (game[(int) (xPos + xspeed) / 20][(int) (yPos + yspeed) / 20].getColor() == color(0, 0, 255)) {
+      xspeed = 0;
+      yspeed = 0;
     }
   }
 

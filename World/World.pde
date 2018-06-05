@@ -3,19 +3,16 @@ import java.util.*;
 public Maze mboy;
 public Square[][] game;
 public PacMan basis = new PacMan();
+
 public ArrayList<Square> squarr = new ArrayList<Square>();
 public String[] temp;
 
 public final int SPEED = 20;
 
-public float xPos = 30;
-public float yPos = 30;
-public float xspeed = SPEED;
-public float yspeed = 0;
-
 public void setup() {
   size(600, 600);
   frameRate(10);
+  
   game = new Square[30][30];
   mboy = new Maze("Sample.txt");
   mboy.mazeSetUp(game);
@@ -39,35 +36,36 @@ public void setup() {
     else{
       ellipse(block.xcor(), block.ycor(), 5, 5);
       fill(block.getColor());
-  }
     }
   }
  
 }
+}
 
-public void draw() { 
+public void draw() {  
   background(0,0,0);
- for (Square[] row: game) {
+  for (Square[] row: game) {
     for (Square block: row) {
-    // System.out.println(block.xcor() + " " + block.ycor());
-    if(block.getRect()){
-    rect(block.xcor(), block.ycor(), 20, 20);
-    }
-    else{
-      ellipse(block.xcor()+10, block.ycor()+10 , 5, 5);
-  }
-  fill(block.getColor());
+      // System.out.println(block.xcor() + " " + block.ycor());
+
+      fill(block.getColor());
+      rect(block.xcor(), block.ycor(), 20, 20);
     }
   }
   
   basis.pacManSetUp();
-  //basis.checkOthers(game);
+  
+  // basis.checkOthers(game);
   // System.out.println("xPos: " + xPos + " yPos: " + yPos);
+  
   /*
-   background(255,0,0);
-   textFont(f, 16);
-   fill(255);
-   text(temp[0], 10, 100);*/
+  background(255,0,0);
+  textFont(f, 16);
+  fill(255);
+  text(temp[0], 10, 100);
+  */
+  
+  basis.checkMoves();
 }
 
 public void keyPressed() {
@@ -75,28 +73,32 @@ public void keyPressed() {
     xspeed = 0;
     yspeed = -SPEED;
     
-    basis.changeDirection(-HALF_PI);
+    // basis.changeDirection(-HALF_PI);
+    basis.checkMoves();
   }
   
   else if (key == 'a' && xPos > 10) {
     xspeed = -SPEED;
     yspeed = 0;
     
-    basis.changeDirection(PI);
+    // basis.changeDirection(PI);
+    basis.checkMoves();
   }
   
   else if (key == 's' && yPos < 590) {
     xspeed = 0;
     yspeed = SPEED;
     
-    basis.changeDirection(HALF_PI);
+    // basis.changeDirection(HALF_PI);
+    basis.checkMoves();
   }
   
   else if (key == 'd' && xPos < 590) {
     xspeed = SPEED;
     yspeed = 0;
     
-    basis.changeDirection(0);
+    // basis.changeDirection(0);
+    basis.checkMoves();
   }
 
 }
