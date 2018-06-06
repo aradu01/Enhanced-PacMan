@@ -46,7 +46,12 @@ public class PacMan {
     }
   }
   */
-  
+  public float x(){
+    return xPos;
+  }
+  public float y(){
+    return yPos;
+  }
   public void checkOthers(Square[][] game){
     for (int r = 0; r < game.length; r++) {
       for (int c = 0; c < game[0].length; c++) {

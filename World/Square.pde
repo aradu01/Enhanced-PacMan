@@ -13,7 +13,12 @@ public class Square {
     yactual = y * 20;
     isRect = rect;
   }
-
+  public void checkPac(PacMan P){
+    if (P.x() == xcor() && P.y() == ycor()){
+      setColor(color(0,0,0));
+    }
+  }
+      
   public int xcor() {
     return x;
   }
@@ -24,6 +29,9 @@ public class Square {
 
   public color getColor() {
     return c;
+  }
+  public void setColor(color c){
+    this.c = c;
   }
   public float getActX(){
     return xactual;
