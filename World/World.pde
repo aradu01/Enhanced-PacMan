@@ -1,5 +1,4 @@
 import java.util.*;
-
 public Maze mboy;
 public Square[][] game;
 public PacMan basis = new PacMan();
@@ -12,7 +11,6 @@ public final int SPEED = 20;
 public void setup() {
   size(600, 600);
   frameRate(10);
-  
   game = new Square[30][30];
   mboy = new Maze("Sample.txt");
   mboy.mazeSetUp(game);
@@ -29,25 +27,39 @@ public void setup() {
   for (Square[] row: game) {
     for (Square block: row) {
     // System.out.println(block.xcor() + " " + block.ycor());
-    
+    if(block.getRect()){
     rect(block.xcor(), block.ycor(), 20, 20);
     fill(block.getColor());
+    }
+    else if (!block.getRect()){
+      ellipse(block.xcor(), block.ycor(), 5, 5);
+      fill(block.getColor());
     }
   }
  
 }
+}
 
 public void draw() {  
+  background(0,0,0);
   for (Square[] row: game) {
     for (Square block: row) {
       // System.out.println(block.xcor() + " " + block.ycor());
-
+      if(block.getRect()){
       fill(block.getColor());
       rect(block.xcor(), block.ycor(), 20, 20);
     }
+    else if (!block.getRect()){
+      fill(block.getColor());
+      ellipse(block.xcor() + 10, block.ycor() + 10, 10, 10);
+    }
   }
-  
+  }
+
   basis.pacManSetUp();
+  //G.makeMove();
+  //B.makeMove();
+  //R.makeMove();
   
   // basis.checkOthers(game);
   // System.out.println("xPos: " + xPos + " yPos: " + yPos);
