@@ -8,4 +8,12 @@ public class GreenGhost extends Ghost {
     greenY = 10;
   }
   
+  public void greenX(int value) {
+    greenX += value;
+  }
+  
+  public void greenY(int value) {
+    greenY += value;
+  }
+  
 }

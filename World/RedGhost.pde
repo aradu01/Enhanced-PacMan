@@ -8,4 +8,12 @@ public class RedGhost extends Ghost {
     redY = 10;
   }
   
+  public void redX(int value) {
+    redX += value;
+  }
+  
+  public void redY(int value) {
+    redY += value;
+  }
+  
 }

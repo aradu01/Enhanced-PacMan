@@ -8,4 +8,12 @@ public class BlueGhost extends Ghost {
     blueY = 10;
   }
   
+  public void blueX(int value) {
+    blueX += value;
+  }
+  
+  public void blueY(int value) {
+    blueY += value;
+  }
+  
 }

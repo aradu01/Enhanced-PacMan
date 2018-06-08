@@ -5,6 +5,7 @@ public class Square {
   int y;
   color c;
   boolean isRect;
+  
   public Square(int xcor, int ycor, color tint, boolean rect) {
     x = xcor;
     y = ycor;
