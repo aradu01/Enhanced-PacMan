@@ -4,8 +4,8 @@ public int redY;
 public class RedGhost extends Ghost {
   
   public RedGhost() {
-    redX = 12;
-    redY = 10;
+    redX = 270;
+    redY = 310;
   }
   
   public void redX(int value) {

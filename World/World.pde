@@ -1,7 +1,12 @@
 import java.util.*;
 public Maze mboy;
 public Square[][] game;
+
 public PacMan basis = new PacMan();
+public Ghost monster = new Ghost();
+public BlueGhost blue = new BlueGhost();
+public GreenGhost green = new GreenGhost();
+public RedGhost red = new RedGhost();
 
 public ArrayList<Square> squarr = new ArrayList<Square>();
 public String[] temp;
@@ -26,18 +31,18 @@ public void setup() {
   
   for (Square[] row: game) {
     for (Square block: row) {
-    // System.out.println(block.xcor() + " " + block.ycor());
-    if(block.getRect()){
-    rect(block.xcor(), block.ycor(), 20, 20);
-    fill(block.getColor());
-    }
-    else if (!block.getRect()){
-      ellipse(block.xcor(), block.ycor(), 5, 5);
-      fill(block.getColor());
-    }
+      // System.out.println(block.xcor() + " " + block.ycor());
+      if (block.getRect()){
+        rect(block.xcor(), block.ycor(), 20, 20);
+        fill(block.getColor());
+      }
+      
+      else if (!block.getRect()) {
+        ellipse(block.xcor(), block.ycor(), 5, 5);
+        fill(block.getColor());
+      }
+    } 
   }
- 
-}
 }
 
 public void draw() {  
@@ -57,6 +62,8 @@ public void draw() {
   }
 
   basis.pacManSetUp();
+  monster.ghostSetUp();
+  
   //G.makeMove();
   //B.makeMove();
   //R.makeMove();
@@ -72,6 +79,7 @@ public void draw() {
   */
   
   basis.checkMoves();
+  
 }
 
 public void keyPressed() {

@@ -87,4 +87,15 @@ public class Ghost {
     yPos += moves[value][1];
   }
   
+  public void ghostSetUp() {
+    fill(255, 0, 0);
+    ellipse(redX, redY, 20, 20);
+    
+    fill(0, 255, 0);
+    ellipse(greenX, greenY, 20, 20);
+    
+    fill(0, 0, 255);
+    ellipse(blueX, blueY, 20, 20);
+  }
+  
 }

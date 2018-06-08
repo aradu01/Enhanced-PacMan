@@ -4,8 +4,8 @@ public int blueY;
 public class BlueGhost extends Ghost {
   
   public BlueGhost() {
-    blueX = 10;
-    blueY = 10;
+    blueX = 350;
+    blueY = 310;
   }
   
   public void blueX(int value) {
