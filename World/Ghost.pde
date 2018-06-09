@@ -1,23 +1,21 @@
 public class Ghost {
   
-  private int xPos;
-  private int yPos;
+  private int xP;
+  private int yP;
   private color tint;
   
-  /*
   public Ghost(int x, int y, color c) {
-    xPos = x;
-    yPos = y;
+    xP = x;
+    yP = y;
     tint = c;
   }
-  */
   
   public int ghostX() {
-    return xPos;
+    return xP;
   }
   
   public int ghostY() {
-    return yPos;
+    return yP;
   }
   
   public color ghostColor() {
@@ -28,32 +26,32 @@ public class Ghost {
     int[][] answer = new int[4][2];
     
     if (xcor + 1 > 0 && xcor + 1 < game.length && ycor > 0 && ycor < game[0].length) {
-		  if (game[xcor + 1][ycor].getColor() != color(0, 255, 0)) {
-		    answer[0][0] = xcor + 1;
+      if (game[xcor + 1][ycor].getColor() != color(0, 255, 0)) {
+        answer[0][0] = xcor + 1;
         answer[0][1] = ycor;
-		  }
-	  }
+      }
+    }
 
     if (xcor - 1 > 0 && xcor - 1 < game.length && ycor > 0 && ycor < game[0].length) {
-		  if (game[xcor - 1][ycor].getColor() != color(0, 255, 0)) {
-		    answer[0][0] = xcor - 1;
+      if (game[xcor - 1][ycor].getColor() != color(0, 255, 0)) {
+        answer[0][0] = xcor - 1;
         answer[0][1] = ycor;
-		  }
-	  }
+      }
+    }
 
     if (xcor > 0 && xcor < game.length && ycor + 1 > 0 && ycor + 1 < game[0].length) {
-		  if (game[xcor][ycor + 1].getColor() != color(0, 255, 0)) {
-		    answer[0][0] = xcor;
+      if (game[xcor][ycor + 1].getColor() != color(0, 255, 0)) {
+        answer[0][0] = xcor;
         answer[0][1] = ycor + 1;
-		  }
-	  }
+      }
+    }
 
     if (xcor > 0 && xcor < game.length && ycor - 1 > 0 && ycor - 1 < game[0].length) {
-		  if (game[xcor][ycor - 1].getColor() != color(0, 255, 0)) {
-		    answer[0][0] = xcor;
+      if (game[xcor][ycor - 1].getColor() != color(0, 255, 0)) {
+        answer[0][0] = xcor;
         answer[0][1] = ycor - 1;
-		  }
-	  }
+      }
+    }
     
     int counter = 0;
 
@@ -80,22 +78,11 @@ public class Ghost {
   }
   
   public void makeMove() {
-    int[][] moves = getMoves(xPos, yPos);
+    int[][] moves = getMoves(xP, yP);
     int value = (int) random(0, moves.length);
     
-    xPos += moves[value][0];
-    yPos += moves[value][1];
-  }
-  
-  public void ghostSetUp() {
-    fill(255, 0, 0);
-    ellipse(redX, redY, 20, 20);
-    
-    fill(0, 255, 0);
-    ellipse(greenX, greenY, 20, 20);
-    
-    fill(0, 0, 255);
-    ellipse(blueX, blueY, 20, 20);
+    X += moves[value][0];
+    Y += moves[value][1];
   }
   
 }

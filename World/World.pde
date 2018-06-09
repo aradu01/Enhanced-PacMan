@@ -82,9 +82,7 @@ public void draw() {
   R.set();
   basis.pacManSetUp();
   for(Square squ : checked){
-    if(las){
-    squ.checkLaser(l, laze);
-    }
+    squ.checkLaser(l);
     if(squ.checkPac(basis)){
       updateScore();
     }
