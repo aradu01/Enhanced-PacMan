@@ -31,16 +31,18 @@ public class Square {
     return false;
   }
   public boolean checkLaser(Laser P){
+    if(laze){
     if(c == color(0,0,0)){
       return false;
     }
-    if(!getRect() && Math.abs(P.x() - x) < 15 && Math.abs(P.y() - y) < 15
+    if(getRect() && Math.abs(P.x() - x) < 15 && Math.abs(P.y() - y) < 15
     &&(Math.abs(P.x() - x) < 15 || Math.abs(P.y() - y) < 15)){
      // if(c == color(155, 215, 0)){
       //  P.laserify();
       //}
       setColor(color(0,0,0));
       return true;
+    }
     }
     return false;
   }
