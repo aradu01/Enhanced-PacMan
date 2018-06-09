@@ -1,0 +1,144 @@
+public float X2 = 550;
+public float Y2 = 30;
+public float xspeed2 = SPEED2;
+public float yspeed2 = 0;
+public boolean isLas2;
+
+public class PacMan2 {
+  
+  public color c2 = color(200, 0, 100);
+  
+  /*
+  public void moveUp() {
+    yPos -= yspeed;
+  }
+ 
+  public void moveDown() {
+    yPos += yspeed;
+  }
+ 
+  public void moveLeft() {
+    xPos -= xspeed;
+  }
+ 
+  public void moveRight() {
+    xPos += xspeed;
+  }
+  */
+  
+  /*
+  private float rotating = 0.0;
+  
+  public void changeDirection(float amount) {
+      rotating = amount;
+  }
+  */
+  
+  /*
+  public void checkOthers(ArrayList<Square> squares){
+    for (Square s: squares) {
+      if (dist(xPos, yPos, s.getActX(), s.getActY()) < 30 && s.getColor() == color(0, 255, 0)) {
+         c = color(255, 0, 0);
+      }
+      
+      else {
+        c = color(255, 255, 0);
+      }
+    }
+  }
+  */
+  public float x(){
+    return X2;
+  }
+  public float y(){
+    return Y2;
+  }
+  public float xspeed(){
+    return xspeed2;
+  }
+  public float yspeed(){
+    return yspeed2;
+  }
+  public void checkOthers(Square[][] game){
+    for (int r = 0; r < game.length; r++) {
+      for (int c = 0; c < game[0].length; c++) {
+        if (dist(X, Y, game[r][c].xcor(), game[r][c].ycor()) <= 20 && game[r][c].getColor() == color(0, 255,0)) {
+          c = color(255, 0, 0);
+        }
+      }
+    }
+  }
+  
+  private float lower2 = QUARTER_PI; // + rotating;
+  private float upper2 = TWO_PI - QUARTER_PI; // + rotating;
+  private float increment2 = .1;
+ 
+  public void pacManSetUp() {
+    fill(c2);
+    arc(X2, Y2, 20, 20, lower2, upper2);
+    
+    /*
+    if (abs(lower - upper) > PI) {
+        lower = upper;
+    }
+    */
+    
+    if (upper2 > TWO_PI) { // + rotating) {
+      upper2 = TWO_PI - increment2; // + rotating;
+      // lower = TWO_PI + increment + rotating;
+      increment2 *= -1;
+    }
+     
+    else if (lower2 > QUARTER_PI) { // + rotating) {
+      upper2 = TWO_PI - QUARTER_PI - increment2; // + rotating;
+      lower2 = QUARTER_PI + increment2; // + rotating;
+      increment2 *= -1;
+    }
+     
+    else {
+      lower2 -= 2 *increment2;
+      upper2 += 2 *increment2;
+    }
+  
+    if (X2 == 30 && xspeed2 < 0) {
+      xspeed2 = 0;
+      Y2 += yspeed2;
+    }
+    
+    else if (X2 == 570 && xspeed2 > 0) {
+      xspeed2 = 0;
+      Y2 += yspeed2;
+    }
+    
+    else if (Y2 == 30 && yspeed2 < 0) {
+      X2 += xspeed2;
+      yspeed2 = 0;
+    }
+    
+    else if (Y2 == 570 && yspeed2 > 0) {
+      X2 += xspeed2;
+      yspeed2 = 0;
+    }
+    
+    else {
+      X2 += xspeed2;
+      Y2 += yspeed2;
+    }
+  }
+  public boolean getLaz(){
+    return isLas2;
+  }
+  public void laserify(){
+    isLas2 = true;
+  }
+  public void setC(color c){
+    this.c2 = c;
+  }
+  public void checkMoves() {
+    if (game[(int) (X2 + xspeed2) / 20][(int) (Y2 + yspeed2) / 20].getColor() == color(0, 0, 255)) {
+      xspeed2 = 0;
+      yspeed2 = 0;
+    }
+  }
+
+}
