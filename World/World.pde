@@ -7,6 +7,8 @@ public Square[][] game;
 public ArrayList<Square> checked = new ArrayList<Square>();
 public PacMan basis = new PacMan();
 public String[] temp;
+public float score;
+PFont f;
 
 public final int SPEED = 20;
 
@@ -19,7 +21,9 @@ public void setup() {
   game = new Square[30][30];
   mboy = new Maze("Sample.txt");
   mboy.mazeSetUp(game);
-  
+  f = createFont("Arial", 16, true);
+  textFont(f, 24);
+  fill(255);
   
  // f = createFont("Arial", 16, true);
  // temp = loadStrings("Sample.txt");
@@ -28,9 +32,6 @@ public void setup() {
     for(int c = 0; c < game[0].length; c++){
       checked.add(game[r][c]);
     }
-  }
-  for(Square squ : checked){
-    squ.checkPac(basis);
   }
   for (Square[] row: game) {
     for (Square block: row) {
@@ -47,14 +48,18 @@ public void setup() {
  
 }
 }
-
+public void updateScore(){
+  score+= 100;;
+}
+public String getScore(){
+  return "" + score;
+}
 public void draw() {  
   background(0,0,0);
   for (Square[] row: game) {
     for (Square block: row) {
-      // System.out.println(block.xcor() + " " + block.ycor());
-    if(!block.checkPac(basis)){
-    if(block.getRect()){
+      // System.out.println(block.xcor() + " " + block.ycor())
+     if(block.getRect()){
       fill(block.getColor());
       rect(block.xcor(), block.ycor(), 20, 20);
     }
@@ -62,13 +67,19 @@ public void draw() {
       fill(block.getColor());
       ellipse(block.xcor() + 10, block.ycor() + 10, 13, 13);
     }
-    }
+    
   }
   }
   G.set();
   B.set();
   R.set();
   basis.pacManSetUp();
+  for(Square squ : checked){
+    if(squ.checkPac(basis)){
+      updateScore();
+    }
+  }
+  text(getScore(), 10, 20);
   //G.makeMove();
   //B.makeMove();
   //R.makeMove();
