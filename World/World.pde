@@ -17,7 +17,6 @@ public final int SPEED = 20;
 public void setup() {
   size(600, 600);
   frameRate(10);
-  l = new Laser(basis);
   G.set();
   B.set();
   R.set();
@@ -83,6 +82,7 @@ public void draw() {
   R.set();
   basis.pacManSetUp();
   for(Square squ : checked){
+    squ.checkLaser(l);
     if(squ.checkPac(basis)){
       updateScore();
     }
@@ -108,6 +108,7 @@ public void draw() {
 public void keyPressed() {
   if(key == 'q' && las){
     laze = true;
+    l = new Laser(basis);
     l.display();
   }
   else if (key == 'w' && Y > 10) {

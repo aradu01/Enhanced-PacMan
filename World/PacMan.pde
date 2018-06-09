@@ -131,6 +131,9 @@ public class PacMan {
   public void laserify(){
     isLas = true;
   }
+  public void setC(color c){
+    this.c = c;
+  }
   public void checkMoves() {
     if (game[(int) (X + xspeed) / 20][(int) (Y + yspeed) / 20].getColor() == color(0, 0, 255)) {
       xspeed = 0;
