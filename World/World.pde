@@ -12,6 +12,7 @@ public float score;
 PFont f;
 public boolean las, laze;
 public Laser l;
+public boolean screen;
 
 public final int SPEED = 20;
 
@@ -33,7 +34,7 @@ public void setup() {
       checked.add(game[r][c]);
     }
   }
-  for (Square[] row: game) {
+ /* for (Square[] row: game) {
     for (Square block: row) {
     // System.out.println(block.xcor() + " " + block.ycor());
     if(block.getRect()){
@@ -46,7 +47,7 @@ public void setup() {
     }
   }
  
-}
+}*/
 }
 public void updateScore(){
   score+= 100;;
@@ -56,6 +57,11 @@ public String getScore(){
 }
 public void draw() {  
   background(0,0,0);
+  if(!screen){
+    text("PACMAN", width/2 - 20, height/2 - 50);
+    text("Press 'P' in order to start game", width/2 - 130, height/2 + 30);
+  }
+  else{
   for (Square[] row: game) {
     for (Square block: row) {
       // System.out.println(block.xcor() + " " + block.ycor())
@@ -99,9 +105,16 @@ public void draw() {
   */
   
   basis.checkMoves();
+  }
 }
 
 public void keyPressed() {
+  if(!screen){
+    if(key == 'p'){
+      screen = true;
+    }
+  }
+  else{
   if(key == 'q' && las){
     laze = true;
     l = new Laser(basis);
@@ -137,6 +150,7 @@ public void keyPressed() {
     
     // basis.changeDirection(0);
     basis.checkMoves();
+  }
   }
 
 }
