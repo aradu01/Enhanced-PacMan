@@ -10,6 +10,7 @@ public class Laser{
     else{
     xlspeed = 5 *P.xspeed();
     ylspeed = 5 *P.yspeed();
+
     }
   }
   public void move(){
