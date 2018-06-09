@@ -14,7 +14,7 @@ public class Square {
     isRect = rect;
   }
   public boolean checkPac(PacMan P){
-    if (Math.abs(P.x() - x) < 5 && Math.abs(P.y() - y) < 5){
+    if(!getRect() && Math.abs(P.x() - x) < 15 && Math.abs(P.y() - y) < 15){
       setColor(color(255,0,0));
       return true;
     }
