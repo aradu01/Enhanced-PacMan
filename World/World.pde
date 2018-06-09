@@ -106,7 +106,8 @@ public void draw() {
       updateScore();
     }
   }
-  text(getScore(), 10, 20);
+  text("SCORE:" + getScore(), 30, 40);
+  fill(color(255, 215, 0));
   //G.makeMove();
   //B.makeMove();
   //R.makeMove();
