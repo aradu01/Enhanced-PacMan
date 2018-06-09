@@ -13,9 +13,9 @@ public float score;
 PFont f;
 public boolean las, laze;
 public Laser l;
-public boolean screen;
+public boolean screen, played;
 PImage img;
-public SoundFile file;
+public SoundFile file1, file2, file3, file4, file5, file6;;
 
 public final int SPEED = 20;
 
@@ -24,6 +24,14 @@ public void setup() {
   frameRate(10);
   game = new Square[30][30];
   mboy = new Maze("Sample.txt");
+  file1 = new SoundFile(this, "Pacman_Intro.wav");
+  file2 = new SoundFile(this, "Pacman_Waka_Waka.wav");
+  file3 = new SoundFile(this, "pacman_death.wav");
+  file4 = new SoundFile(this, "pacman_eatfruit.wav");
+  file5 = new SoundFile(this, "pacman_eatghost.wav");
+  file6 = new SoundFile(this, "pacman_intermission.wav");
+  file1.play();
+  
   mboy.mazeSetUp(game);
   img = loadImage("Pac-man.png");
   f = createFont("Arial", 16, true);
@@ -54,18 +62,21 @@ public void setup() {
 }*/
 }
 public void updateScore(){
-  score+= 100;;
+  score+= 100;
 }
 public String getScore(){
   return "" + score;
 }
 public void draw() {  
   background(0,0,0);
+  if(!played && millis() > 4000){
+    file2.loop();
+    played = true;
+  }
   if(!screen){
     image(img, 0, 0, width, height);
     text("PACMAN", width/2 - 45, height/2 - 50);
     text("Press 'P' in order to start game", width/2 - 135, height/2 + 30);
-   
   }
   else{
   for (Square[] row: game) {
@@ -91,7 +102,7 @@ public void draw() {
   monster.ghostSetUp();
   for(Square squ : checked){
     squ.checkLaser(l);
-    if(squ.checkPac(basis)){
+    if(squ.checkPac(basis, file4)){
       updateScore();
     }
   }
