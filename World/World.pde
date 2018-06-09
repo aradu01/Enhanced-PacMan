@@ -4,9 +4,8 @@ public BlueGhost B = new BlueGhost();
 public RedGhost R = new RedGhost();
 public Maze mboy;
 public Square[][] game;
+public ArrayList<Square> checked = new ArrayList<Square>();
 public PacMan basis = new PacMan();
-
-public ArrayList<Square> squarr = new ArrayList<Square>();
 public String[] temp;
 
 public final int SPEED = 20;
@@ -26,7 +25,7 @@ public void setup() {
  
   for(int r = 0; r < game.length; r++){
     for(int c = 0; c < game[0].length; c++){
-      squarr.add(game[r][c]);
+      checked.add(game[r][c]);
     }
   }
   
@@ -64,6 +63,9 @@ public void draw() {
   G.set();
   B.set();
   R.set();
+  for(Square squ : checked){
+    squ.checkPac(basis);
+  }
   basis.pacManSetUp();
   //G.makeMove();
   //B.makeMove();

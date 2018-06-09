@@ -14,8 +14,8 @@ public class Square {
     isRect = rect;
   }
   public void checkPac(PacMan P){
-    if (P.x() == xcor() && P.y() == ycor()){
-      setColor(color(0,0,0));
+    if (P.x() == x && P.y() == y){
+      this.setColor(color(0,0,0));
     }
   }
       
