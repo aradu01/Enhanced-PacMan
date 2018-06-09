@@ -8,17 +8,18 @@ public Maze mboy;
 public Square[][] game;
 public ArrayList<Square> checked = new ArrayList<Square>();
 public PacMan basis = new PacMan();
-public PacMan second = new PacMan();
+public PacMan2 second = new PacMan2();
 public String[] temp;
 public float score;
 PFont f;
-public boolean las, laze;
-public Laser l;
+public boolean las, laze, las2, laze2;
+public Laser l, l2;
 public boolean screen, played, twoscreen;
 PImage img;
 public SoundFile file1, file2, file3, file4, file5, file6;;
 
 public final int SPEED = 20;
+public final int SPEED2 = 20;
 
 public void setup() {
   size(600, 600);
@@ -95,9 +96,14 @@ public void draw() {
   }
   }
   las = basis.getLaz();
+  las2 = second.getLaz();
   if(laze){
     l.display();
     l.move();
+  }
+  if(laze2){
+    l2.display();
+    l2.move();
   }
   if(twoscreen){
     second.pacManSetUp();
@@ -105,8 +111,16 @@ public void draw() {
   basis.pacManSetUp();
   monster.ghostSetUp();
   for(Square squ : checked){
+    if(laze){
     squ.checkLaser(l);
+    }
+    if(laze2){
+    squ.checkLaser(l2);
+    }
     if(squ.checkPac(basis, file4)){
+      updateScore();
+    }
+    if(squ.checkPac(second, file4)){
       updateScore();
     }
   }
@@ -180,16 +194,21 @@ public void keyPressed() {
     basis.checkMoves();
   }
   if(twoscreen){
-    if (key == 'u' && Y2 > 10) {
+    if(key == 'o' && las2){
+    laze2 = true;
+    l2 = new Laser(second);
+    l2.display();
+    }
+    else if (key == 'u' && Y2 > 10) {
     xspeed2 = 0;
-    yspeed2 = -SPEED;
+    yspeed2 = -SPEED2;
     
     // basis.changeDirection(-HALF_PI);
     second.checkMoves();
   }
   
   else if (key == 'h' && X2 > 10) {
-    xspeed2 = -SPEED;
+    xspeed2 = -SPEED2;
     yspeed2 = 0;
     
     // basis.changeDirection(PI);
@@ -198,14 +217,14 @@ public void keyPressed() {
   
   else if (key == 'j' && Y2 < 590) {
     xspeed2 = 0;
-    yspeed2 = SPEED;
+    yspeed2 = SPEED2;
     
     // basis.changeDirection(HALF_PI);
     second.checkMoves();
   }
   
   else if (key == 'k' && X2 < 590) {
-    xspeed2 = SPEED;
+    xspeed2 = SPEED2;
     yspeed2 = 0;
     
     // basis.changeDirection(0);

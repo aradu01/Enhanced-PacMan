@@ -1,4 +1,4 @@
-public float X2 = 30;
+public float X2 = 500;
 public float Y2 = 30;
 public float xspeed2 = SPEED;
 public float yspeed2 = 0;
@@ -6,7 +6,7 @@ public boolean isLas2;
 
 public class PacMan2 {
   
-  public color c2 = color(255, 255, 0);
+  public color c2 = color(200, 0, 100);
   
   /*
   public void moveUp() {
@@ -75,7 +75,7 @@ public class PacMan2 {
  
   public void pacManSetUp() {
     fill(c2);
-    arc(X2, Y2, width - 20, 20, lower2, upper2);
+    arc(X2, Y2, 20, 20, lower2, upper2);
     
     /*
     if (abs(lower - upper) > PI) {
