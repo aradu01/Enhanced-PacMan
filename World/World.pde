@@ -20,6 +20,7 @@ public void setup() {
   mboy = new Maze("Sample.txt");
   mboy.mazeSetUp(game);
   
+  
  // f = createFont("Arial", 16, true);
  // temp = loadStrings("Sample.txt");
  
@@ -28,7 +29,9 @@ public void setup() {
       checked.add(game[r][c]);
     }
   }
-  
+  for(Square squ : checked){
+    squ.checkPac(basis);
+  }
   for (Square[] row: game) {
     for (Square block: row) {
     // System.out.println(block.xcor() + " " + block.ycor());
@@ -50,7 +53,10 @@ public void draw() {
   for (Square[] row: game) {
     for (Square block: row) {
       // System.out.println(block.xcor() + " " + block.ycor());
-      if(block.getRect()){
+    if(block.checkPac(basis)){
+      fill(color(255,0,0));
+    }
+     else if(block.getRect()){
       fill(block.getColor());
       rect(block.xcor(), block.ycor(), 20, 20);
     }
@@ -63,9 +69,6 @@ public void draw() {
   G.set();
   B.set();
   R.set();
-  for(Square squ : checked){
-    squ.checkPac(basis);
-  }
   basis.pacManSetUp();
   //G.makeMove();
   //B.makeMove();
@@ -85,7 +88,7 @@ public void draw() {
 }
 
 public void keyPressed() {
-  if (key == 'w' && yPos > 10) {
+  if (key == 'w' && Y > 10) {
     xspeed = 0;
     yspeed = -SPEED;
     
@@ -93,7 +96,7 @@ public void keyPressed() {
     basis.checkMoves();
   }
   
-  else if (key == 'a' && xPos > 10) {
+  else if (key == 'a' && X> 10) {
     xspeed = -SPEED;
     yspeed = 0;
     
@@ -101,7 +104,7 @@ public void keyPressed() {
     basis.checkMoves();
   }
   
-  else if (key == 's' && yPos < 590) {
+  else if (key == 's' && Y < 590) {
     xspeed = 0;
     yspeed = SPEED;
     
@@ -109,7 +112,7 @@ public void keyPressed() {
     basis.checkMoves();
   }
   
-  else if (key == 'd' && xPos < 590) {
+  else if (key == 'd' && X < 590) {
     xspeed = SPEED;
     yspeed = 0;
     

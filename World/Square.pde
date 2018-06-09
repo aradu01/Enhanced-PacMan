@@ -13,10 +13,12 @@ public class Square {
     yactual = y * 20;
     isRect = rect;
   }
-  public void checkPac(PacMan P){
-    if (P.x() == x && P.y() == y){
-      this.setColor(color(0,0,0));
+  public boolean checkPac(PacMan P){
+    if (Math.abs(P.x() - x) < 5 && Math.abs(P.y() - y) < 5){
+      setColor(color(255,0,0));
+      return true;
     }
+    return false;
   }
       
   public int xcor() {

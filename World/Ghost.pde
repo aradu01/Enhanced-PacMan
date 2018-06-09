@@ -81,8 +81,8 @@ public class Ghost {
     int[][] moves = getMoves(xP, yP);
     int value = (int) random(0, moves.length);
     
-    xPos += moves[value][0];
-    yPos += moves[value][1];
+    X += moves[value][0];
+    Y += moves[value][1];
   }
   
 }

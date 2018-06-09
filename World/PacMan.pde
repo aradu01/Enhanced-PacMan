@@ -1,5 +1,5 @@
-public float xPos = 30;
-public float yPos = 30;
+public float X = 30;
+public float Y = 30;
 public float xspeed = SPEED;
 public float yspeed = 0;
 
@@ -47,15 +47,15 @@ public class PacMan {
   }
   */
   public float x(){
-    return xPos;
+    return X;
   }
   public float y(){
-    return yPos;
+    return Y;
   }
   public void checkOthers(Square[][] game){
     for (int r = 0; r < game.length; r++) {
       for (int c = 0; c < game[0].length; c++) {
-        if (dist(xPos, yPos, game[r][c].xcor(), game[r][c].ycor()) <= 20 && game[r][c].getColor() == color(0, 255,0)) {
+        if (dist(X, Y, game[r][c].xcor(), game[r][c].ycor()) <= 20 && game[r][c].getColor() == color(0, 255,0)) {
           c = color(255, 0, 0);
         }
       }
@@ -68,7 +68,7 @@ public class PacMan {
  
   public void pacManSetUp() {
     fill(c);
-    arc(xPos, yPos, 20, 20, lower, upper);
+    arc(X, Y, 20, 20, lower, upper);
     
     /*
     if (abs(lower - upper) > PI) {
@@ -93,34 +93,34 @@ public class PacMan {
       upper += increment;
     }
   
-    if (xPos == 30 && xspeed < 0) {
+    if (X == 30 && xspeed < 0) {
       xspeed = 0;
-      yPos += yspeed;
+      Y += yspeed;
     }
     
-    else if (xPos == 570 && xspeed > 0) {
+    else if (X == 570 && xspeed > 0) {
       xspeed = 0;
-      yPos += yspeed;
+      Y += yspeed;
     }
     
-    else if (yPos == 30 && yspeed < 0) {
-      xPos += xspeed;
+    else if (Y == 30 && yspeed < 0) {
+      X += xspeed;
       yspeed = 0;
     }
     
-    else if (yPos == 570 && yspeed > 0) {
-      xPos += xspeed;
+    else if (Y == 570 && yspeed > 0) {
+      X += xspeed;
       yspeed = 0;
     }
     
     else {
-      xPos += xspeed;
-      yPos += yspeed;
+      X += xspeed;
+      Y += yspeed;
     }
   }
   
   public void checkMoves() {
-    if (game[(int) (xPos + xspeed) / 20][(int) (yPos + yspeed) / 20].getColor() == color(0, 0, 255)) {
+    if (game[(int) (X + xspeed) / 20][(int) (Y + yspeed) / 20].getColor() == color(0, 0, 255)) {
       xspeed = 0;
       yspeed = 0;
     }
