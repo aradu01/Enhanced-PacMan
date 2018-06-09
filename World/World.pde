@@ -136,7 +136,7 @@ public void draw() {
   }
   text("P1SCORE:" + getScore(), 30, 40);
   if(twoscreen){
-    text("P2SCORE:" + getScore2(), 430, 40);
+    text("P2SCORE:" + getScore2(), 400, 40);
   }
   fill(color(255, 215, 0));
   //G.makeMove();
