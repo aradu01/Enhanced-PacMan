@@ -1,8 +1,9 @@
 public class Laser{
   public float x,y, xlspeed, ylspeed;
-  public Laser(float xcor, float ycor, PacMan P){
-    x = xcor;
-    y = ycor;
+  public Laser(PacMan P){
+    
+    x = P.x();
+    y = P.y();
     xspeed = P.xspeed();
     yspeed = P.yspeed();
   }

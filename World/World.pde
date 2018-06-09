@@ -9,6 +9,8 @@ public PacMan basis = new PacMan();
 public String[] temp;
 public float score;
 PFont f;
+public boolean las;
+public Laser l;
 
 public final int SPEED = 20;
 
@@ -70,6 +72,7 @@ public void draw() {
     
   }
   }
+  las = basis.getLaz();
   G.set();
   B.set();
   R.set();
@@ -98,7 +101,10 @@ public void draw() {
 }
 
 public void keyPressed() {
-  if (key == 'w' && Y > 10) {
+  if(key == 'l'&& las){
+    l = new Laser(basis);
+  }
+  else if (key == 'w' && Y > 10) {
     xspeed = 0;
     yspeed = -SPEED;
     

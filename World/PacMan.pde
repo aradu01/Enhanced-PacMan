@@ -2,6 +2,7 @@ public float X = 30;
 public float Y = 30;
 public float xspeed = SPEED;
 public float yspeed = 0;
+public boolean isLas;
 
 public class PacMan {
   
@@ -124,7 +125,12 @@ public class PacMan {
       Y += yspeed;
     }
   }
-  
+  public boolean getLaz(){
+    return isLas;
+  }
+  public void laserify(){
+    isLas = !isLas;
+  }
   public void checkMoves() {
     if (game[(int) (X + xspeed) / 20][(int) (Y + yspeed) / 20].getColor() == color(0, 0, 255)) {
       xspeed = 0;
