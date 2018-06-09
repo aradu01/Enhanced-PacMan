@@ -30,7 +30,7 @@ public class Square {
     }
     return false;
   }
-  public boolean checkLaser(Laser P, boolean laze){
+  public boolean checkLaser(Laser P){
     if(laze){
     if(c == color(0,0,0)){
       return false;

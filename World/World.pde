@@ -1,4 +1,5 @@
 import java.util.*;
+public Ghost monster = new Ghost();
 public GreenGhost G = new GreenGhost();
 public BlueGhost B = new BlueGhost();
 public RedGhost R = new RedGhost();
@@ -17,11 +18,8 @@ public final int SPEED = 20;
 public void setup() {
   size(600, 600);
   frameRate(10);
-  G.set();
-  B.set();
-  R.set();
   game = new Square[30][30];
-  mboy = new Maze("Sample2.txt");
+  mboy = new Maze("Sample.txt");
   mboy.mazeSetUp(game);
   f = createFont("Arial", 16, true);
   textFont(f, 24);
@@ -77,10 +75,8 @@ public void draw() {
     l.display();
     l.move();
   }
-  G.set();
-  B.set();
-  R.set();
   basis.pacManSetUp();
+  monster.ghostSetUp();
   for(Square squ : checked){
     squ.checkLaser(l);
     if(squ.checkPac(basis)){
