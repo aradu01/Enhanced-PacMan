@@ -71,7 +71,7 @@ public class PacMan {
   
   private float lower = QUARTER_PI; // + rotating;
   private float upper = TWO_PI - QUARTER_PI; // + rotating;
-  private float increment = 0.1;
+  private float increment = 1;
  
   public void pacManSetUp() {
     fill(c);
