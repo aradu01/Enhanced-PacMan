@@ -1,4 +1,5 @@
 import java.util.*;
+import processing.sound.*;
 public Ghost monster = new Ghost();
 public GreenGhost G = new GreenGhost();
 public BlueGhost B = new BlueGhost();
@@ -14,6 +15,7 @@ public boolean las, laze;
 public Laser l;
 public boolean screen;
 PImage img;
+public SoundFile file;
 
 public final int SPEED = 20;
 
