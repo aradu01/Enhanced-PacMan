@@ -8,12 +8,13 @@ public Maze mboy;
 public Square[][] game;
 public ArrayList<Square> checked = new ArrayList<Square>();
 public PacMan basis = new PacMan();
+public PacMan second = new PacMan();
 public String[] temp;
 public float score;
 PFont f;
 public boolean las, laze;
 public Laser l;
-public boolean screen, played;
+public boolean screen, played, twoscreen;
 PImage img;
 public SoundFile file1, file2, file3, file4, file5, file6;;
 
@@ -98,6 +99,9 @@ public void draw() {
     l.display();
     l.move();
   }
+  if(twoscreen){
+    second.pacManSetUp();
+  }
   basis.pacManSetUp();
   monster.ghostSetUp();
   for(Square squ : checked){
@@ -121,7 +125,9 @@ public void draw() {
   fill(255);
   text(temp[0], 10, 100);
   */
-  
+  if(twoscreen){
+    second.checkMoves();
+  }
   basis.checkMoves();
   }
 }
@@ -130,6 +136,10 @@ public void keyPressed() {
   if(!screen){
     if(key == 'p'){
       screen = true;
+    }
+    if(key == 't'){
+      screen = true;
+      twoscreen = true;
     }
   }
   else{
@@ -168,6 +178,39 @@ public void keyPressed() {
     
     // basis.changeDirection(0);
     basis.checkMoves();
+  }
+  if(twoscreen){
+    if (key == 'u' && Y2 > 10) {
+    xspeed2 = 0;
+    yspeed2 = -SPEED;
+    
+    // basis.changeDirection(-HALF_PI);
+    second.checkMoves();
+  }
+  
+  else if (key == 'h' && X2 > 10) {
+    xspeed2 = -SPEED;
+    yspeed2 = 0;
+    
+    // basis.changeDirection(PI);
+    second.checkMoves();
+  }
+  
+  else if (key == 'j' && Y2 < 590) {
+    xspeed2 = 0;
+    yspeed2 = SPEED;
+    
+    // basis.changeDirection(HALF_PI);
+    second.checkMoves();
+  }
+  
+  else if (key == 'k' && X2 < 590) {
+    xspeed2 = SPEED;
+    yspeed2 = 0;
+    
+    // basis.changeDirection(0);
+    second.checkMoves();
+  }
   }
   }
 
