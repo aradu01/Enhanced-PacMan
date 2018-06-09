@@ -28,32 +28,32 @@ public class Ghost {
     int[][] answer = new int[4][2];
     
     if (xcor + 1 > 0 && xcor + 1 < game.length && ycor > 0 && ycor < game[0].length) {
-		  if (game[xcor + 1][ycor].getColor() != color(0, 255, 0)) {
-		    answer[0][0] = xcor + 1;
+      if (game[xcor + 1][ycor].getColor() != color(0, 255, 0)) {
+        answer[0][0] = xcor + 1;
         answer[0][1] = ycor;
-		  }
-	  }
+      }
+    }
 
     if (xcor - 1 > 0 && xcor - 1 < game.length && ycor > 0 && ycor < game[0].length) {
-		  if (game[xcor - 1][ycor].getColor() != color(0, 255, 0)) {
-		    answer[0][0] = xcor - 1;
+      if (game[xcor - 1][ycor].getColor() != color(0, 255, 0)) {
+        answer[0][0] = xcor - 1;
         answer[0][1] = ycor;
-		  }
-	  }
+      }
+    }
 
     if (xcor > 0 && xcor < game.length && ycor + 1 > 0 && ycor + 1 < game[0].length) {
-		  if (game[xcor][ycor + 1].getColor() != color(0, 255, 0)) {
-		    answer[0][0] = xcor;
+      if (game[xcor][ycor + 1].getColor() != color(0, 255, 0)) {
+        answer[0][0] = xcor;
         answer[0][1] = ycor + 1;
-		  }
-	  }
+      }
+    }
 
     if (xcor > 0 && xcor < game.length && ycor - 1 > 0 && ycor - 1 < game[0].length) {
-		  if (game[xcor][ycor - 1].getColor() != color(0, 255, 0)) {
-		    answer[0][0] = xcor;
+      if (game[xcor][ycor - 1].getColor() != color(0, 255, 0)) {
+        answer[0][0] = xcor;
         answer[0][1] = ycor - 1;
-		  }
-	  }
+      }
+    }
     
     int counter = 0;
 

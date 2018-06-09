@@ -1,11 +1,10 @@
 public class Square {
-  
   float xactual, yactual;
   int x;
   int y;
   color c;
   boolean isRect;
-  
+
   public Square(int xcor, int ycor, color tint, boolean rect) {
     x = xcor;
     y = ycor;
@@ -14,7 +13,40 @@ public class Square {
     yactual = y * 20;
     isRect = rect;
   }
-
+  public boolean checkPac(PacMan P){
+    if(c == color(0,0,0)){
+      return false;
+    }
+    if(!getRect() && Math.abs(P.x() - x) < 15 && Math.abs(P.y() - y) < 15
+    &&(Math.abs(P.x() - x) < 15 || Math.abs(P.y() - y) < 15)){
+     // if(c == color(155, 215, 0)){
+      //  P.laserify();
+      //}
+      if(c == color(255, 215, 0)){
+      P.laserify();
+    }
+      setColor(color(0,0,0));
+      return true;
+    }
+    return false;
+  }
+  public boolean checkLaser(Laser P){
+    if(laze){
+    if(c == color(0,0,0)){
+      return false;
+    }
+    if(getRect() && Math.abs(P.x() - x) < 15 && Math.abs(P.y() - y) < 15
+    &&(Math.abs(P.x() - x) < 15 || Math.abs(P.y() - y) < 15)){
+     // if(c == color(155, 215, 0)){
+      //  P.laserify();
+      //}
+      setColor(color(0,0,0));
+      return true;
+    }
+    }
+    return false;
+  }
+      
   public int xcor() {
     return x;
   }
@@ -26,6 +58,9 @@ public class Square {
   public color getColor() {
     return c;
   }
+  public void setColor(color c){
+    this.c = c;
+  }
   public float getActX(){
     return xactual;
   }
@@ -35,5 +70,4 @@ public class Square {
   public boolean getRect(){
     return isRect;
   }
-  
 }
