@@ -17,14 +17,14 @@ public class Square {
     if(c == color(0,0,0)){
       return false;
     }
-    if(c == color(155, 215, 0)){
-      P.laserify();
-    }
     if(!getRect() && Math.abs(P.x() - x) < 15 && Math.abs(P.y() - y) < 15
     &&(Math.abs(P.x() - x) < 15 || Math.abs(P.y() - y) < 15)){
      // if(c == color(155, 215, 0)){
       //  P.laserify();
       //}
+      if(c == color(155, 215, 0)){
+      P.laserify();
+    }
       setColor(color(0,0,0));
       return true;
     }

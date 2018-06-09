@@ -9,7 +9,7 @@ public PacMan basis = new PacMan();
 public String[] temp;
 public float score;
 PFont f;
-public boolean las;
+public boolean las, laze;
 public Laser l;
 
 public final int SPEED = 20;
@@ -17,11 +17,12 @@ public final int SPEED = 20;
 public void setup() {
   size(600, 600);
   frameRate(10);
+  l = new Laser(basis);
   G.set();
   B.set();
   R.set();
   game = new Square[30][30];
-  mboy = new Maze("Sample.txt");
+  mboy = new Maze("Sample2.txt");
   mboy.mazeSetUp(game);
   f = createFont("Arial", 16, true);
   textFont(f, 24);
@@ -43,7 +44,7 @@ public void setup() {
     fill(block.getColor());
     }
     else if (!block.getRect()){
-      ellipse(block.xcor(), block.ycor(), 5, 5);
+      ellipse(block.xcor() + 10, block.ycor() + 10, 13, 13);
       fill(block.getColor());
     }
   }
@@ -73,6 +74,10 @@ public void draw() {
   }
   }
   las = basis.getLaz();
+  if(laze){
+    l.display();
+    l.move();
+  }
   G.set();
   B.set();
   R.set();
@@ -101,8 +106,9 @@ public void draw() {
 }
 
 public void keyPressed() {
-  if(key == 'l'&& las){
-    l = new Laser(basis);
+  if(key == 'q' && las){
+    laze = true;
+    l.display();
   }
   else if (key == 'w' && Y > 10) {
     xspeed = 0;

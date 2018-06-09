@@ -129,7 +129,7 @@ public class PacMan {
     return isLas;
   }
   public void laserify(){
-    isLas = !isLas;
+    isLas = true;
   }
   public void checkMoves() {
     if (game[(int) (X + xspeed) / 20][(int) (Y + yspeed) / 20].getColor() == color(0, 0, 255)) {
