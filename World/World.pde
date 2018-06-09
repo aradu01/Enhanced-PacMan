@@ -10,7 +10,7 @@ public ArrayList<Square> checked = new ArrayList<Square>();
 public PacMan basis = new PacMan();
 public PacMan2 second = new PacMan2();
 public String[] temp;
-public float score;
+public float score, score2;
 PFont f;
 public boolean las, laze, las2, laze2;
 public Laser l, l2;
@@ -66,8 +66,14 @@ public void setup() {
 public void updateScore(){
   score+= 100;
 }
+public void updateScore2(){
+  score2+= 100;
+}
 public String getScore(){
   return "" + score;
+}
+public String getScore2(){
+  return "" + score2;
 }
 public void draw() {  
   background(0,0,0);
@@ -111,20 +117,27 @@ public void draw() {
   basis.pacManSetUp();
   monster.ghostSetUp();
   for(Square squ : checked){
-    if(laze){
+    if(laze && laze2){
+      squ.checkLaser(l);
+      squ.checkLaser(l2);
+    }
+    else if(laze){
     squ.checkLaser(l);
     }
-    if(laze2){
+    else if(laze2){
     squ.checkLaser(l2);
     }
     if(squ.checkPac(basis, file4)){
       updateScore();
     }
     if(squ.checkPac(second, file4)){
-      updateScore();
+      updateScore2();
     }
   }
-  text("SCORE:" + getScore(), 30, 40);
+  text("P1SCORE:" + getScore(), 30, 40);
+  if(twoscreen){
+    text("P2SCORE:" + getScore2(), 430, 40);
+  }
   fill(color(255, 215, 0));
   //G.makeMove();
   //B.makeMove();

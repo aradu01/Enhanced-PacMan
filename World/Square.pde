@@ -50,7 +50,7 @@ public class Square {
     return false;
   }
   public boolean checkLaser(Laser P){
-    if(laze){
+    if(laze || laze2){
     if(c == color(0,0,0)){
       return false;
     }
