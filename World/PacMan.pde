@@ -52,6 +52,12 @@ public class PacMan {
   public float y(){
     return Y;
   }
+  public float xspeed(){
+    return xspeed;
+  }
+  public float yspeed(){
+    return yspeed;
+  }
   public void checkOthers(Square[][] game){
     for (int r = 0; r < game.length; r++) {
       for (int c = 0; c < game[0].length; c++) {
