@@ -1,69 +1,95 @@
 import java.util.*;
+public GreenGhost G = new GreenGhost();
+public BlueGhost B = new BlueGhost();
+public RedGhost R = new RedGhost();
 public Maze mboy;
 public Square[][] game;
-
+public ArrayList<Square> checked = new ArrayList<Square>();
 public PacMan basis = new PacMan();
-public Ghost monster = new Ghost();
-public BlueGhost blue = new BlueGhost();
-public GreenGhost green = new GreenGhost();
-public RedGhost red = new RedGhost();
-
-public ArrayList<Square> squarr = new ArrayList<Square>();
 public String[] temp;
+public float score;
+PFont f;
+public boolean las, laze;
+public Laser l;
 
 public final int SPEED = 20;
 
 public void setup() {
   size(600, 600);
   frameRate(10);
+  G.set();
+  B.set();
+  R.set();
   game = new Square[30][30];
-  mboy = new Maze("Sample.txt");
+  mboy = new Maze("Sample2.txt");
   mboy.mazeSetUp(game);
+  f = createFont("Arial", 16, true);
+  textFont(f, 24);
+  fill(255);
   
  // f = createFont("Arial", 16, true);
  // temp = loadStrings("Sample.txt");
  
   for(int r = 0; r < game.length; r++){
     for(int c = 0; c < game[0].length; c++){
-      squarr.add(game[r][c]);
+      checked.add(game[r][c]);
     }
   }
-  
   for (Square[] row: game) {
     for (Square block: row) {
-      // System.out.println(block.xcor() + " " + block.ycor());
-      if (block.getRect()){
-        rect(block.xcor(), block.ycor(), 20, 20);
-        fill(block.getColor());
-      }
-      
-      else if (!block.getRect()) {
-        ellipse(block.xcor(), block.ycor(), 5, 5);
-        fill(block.getColor());
-      }
-    } 
+    // System.out.println(block.xcor() + " " + block.ycor());
+    if(block.getRect()){
+    rect(block.xcor(), block.ycor(), 20, 20);
+    fill(block.getColor());
+    }
+    else if (!block.getRect()){
+      ellipse(block.xcor() + 10, block.ycor() + 10, 13, 13);
+      fill(block.getColor());
+    }
   }
+ 
 }
-
+}
+public void updateScore(){
+  score+= 100;;
+}
+public String getScore(){
+  return "" + score;
+}
 public void draw() {  
   background(0,0,0);
   for (Square[] row: game) {
     for (Square block: row) {
-      // System.out.println(block.xcor() + " " + block.ycor());
-      if(block.getRect()){
+      // System.out.println(block.xcor() + " " + block.ycor())
+     if(block.getRect()){
       fill(block.getColor());
       rect(block.xcor(), block.ycor(), 20, 20);
     }
     else if (!block.getRect()){
       fill(block.getColor());
-      ellipse(block.xcor() + 10, block.ycor() + 10, 10, 10);
+      ellipse(block.xcor() + 10, block.ycor() + 10, 13, 13);
+    }
+    
+  }
+  }
+  las = basis.getLaz();
+  if(laze){
+    l.display();
+    l.move();
+  }
+  G.set();
+  B.set();
+  R.set();
+  basis.pacManSetUp();
+  for(Square squ : checked){
+    if(las){
+    squ.checkLaser(l, laze);
+    }
+    if(squ.checkPac(basis)){
+      updateScore();
     }
   }
-  }
-
-  basis.pacManSetUp();
-  monster.ghostSetUp();
-  
+  text(getScore(), 10, 20);
   //G.makeMove();
   //B.makeMove();
   //R.makeMove();
@@ -79,11 +105,15 @@ public void draw() {
   */
   
   basis.checkMoves();
-  
 }
 
 public void keyPressed() {
-  if (key == 'w' && yPos > 10) {
+  if(key == 'q' && las){
+    laze = true;
+    l = new Laser(basis);
+    l.display();
+  }
+  else if (key == 'w' && Y > 10) {
     xspeed = 0;
     yspeed = -SPEED;
     
@@ -91,7 +121,7 @@ public void keyPressed() {
     basis.checkMoves();
   }
   
-  else if (key == 'a' && xPos > 10) {
+  else if (key == 'a' && X> 10) {
     xspeed = -SPEED;
     yspeed = 0;
     
@@ -99,7 +129,7 @@ public void keyPressed() {
     basis.checkMoves();
   }
   
-  else if (key == 's' && yPos < 590) {
+  else if (key == 's' && Y < 590) {
     xspeed = 0;
     yspeed = SPEED;
     
@@ -107,7 +137,7 @@ public void keyPressed() {
     basis.checkMoves();
   }
   
-  else if (key == 'd' && xPos < 590) {
+  else if (key == 'd' && X < 590) {
     xspeed = SPEED;
     yspeed = 0;
     
