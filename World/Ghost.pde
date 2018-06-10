@@ -3,6 +3,7 @@ public class Ghost {
   protected int ghostX;
   protected int ghostY;
   protected color ghostTint;
+  public PImage Ghost;
   
   /*
   public Ghost(int x, int y, color c) {
@@ -109,13 +110,50 @@ public class Ghost {
   
   public void ghostSetUp() {
     fill(255, 0, 0);
-    ellipse(R.getX(), R.getY(), 20, 20);
+    //rotate(HALF_PI);
+    arc(R.getX(), R.getY(), 25, 25, PI, 2 *PI);
+    //ellipse(R.getX(), R.getY(), 20, 20);
+    ellipse(R.getX() - 10, R.getY() +3, 7, 7);
+    ellipse(R.getX() - 3.5, R.getY() + 3, 7, 7);
+    //ellipse(R.getX(), R.getY() + 8, 7, 7);
+    ellipse(R.getX() + 3.5, R.getY() + 3, 7, 7);
+    ellipse(R.getX() + 10, R.getY() + 3, 7, 7);
+    fill(255, 255,255);
+    ellipse(R.getX() - 6, R.getY() - 6, 8, 8);
+    ellipse(R.getX() + 6, R.getY() - 6, 8, 8);
+    fill(0,0,0);
+    ellipse(R.getX() - 6, R.getY() - 6, 2, 2);
+    ellipse(R.getX() + 6, R.getY() - 6, 2, 2);
     
     fill(0, 255, 0);
-    ellipse(G.getX(), G.getY(), 20, 20);
+    arc(G.getX(), R.getY(), 25, 25, PI, 2 *PI);
+    //ellipse(R.getX(), R.getY(), 20, 20);
+    ellipse(G.getX() - 10, G.getY() +3, 7, 7);
+    ellipse(G.getX() - 3.5, G.getY() + 3, 7, 7);
+    //ellipse(R.getX(), R.getY() + 8, 7, 7);
+    ellipse(G.getX() + 3.5, G.getY() + 3, 7, 7);
+    ellipse(G.getX() + 10, G.getY() + 3, 7, 7);
+    fill(255, 255,255);
+    ellipse(G.getX() - 6, G.getY() - 6, 8, 8);
+    ellipse(G.getX() + 6, G.getY() - 6, 8, 8);
+    fill(0,0,0);
+    ellipse(G.getX() - 6, R.getY() - 6, 2, 2);
+    ellipse(G.getX() + 6, R.getY() - 6, 2, 2);
     
     fill(0, 0, 255);
-    ellipse(B.getX(), B.getY(), 20, 20);
+    arc(B.getX(), B.getY(), 25, 25, PI, 2 *PI);
+    //ellipse(R.getX(), R.getY(), 20, 20);
+    ellipse(B.getX() - 10, B.getY() +3, 7, 7);
+    ellipse(B.getX() - 3.5, B.getY() + 3, 7, 7);
+    //ellipse(R.getX(), R.getY() + 8, 7, 7);
+    ellipse(B.getX() + 3.5, B.getY() + 3, 7, 7);
+    ellipse(B.getX() + 10, B.getY() + 3, 7, 7);
+    fill(255, 255,255);
+    ellipse(B.getX() - 6, B.getY() - 6, 8, 8);
+    ellipse(B.getX() + 6, B.getY() - 6, 8, 8);
+    fill(0,0,0);
+    ellipse(B.getX() - 6, R.getY() - 6, 2, 2);
+    ellipse(B.getX() + 6, R.getY() - 6, 2, 2);
   }
   
 }
