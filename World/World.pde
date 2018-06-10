@@ -20,6 +20,7 @@ PFont f;
 public boolean las, laze, las2, laze2;
 public Laser l, l2;
 public boolean screen, played, twoscreen;
+public boolean alive = true;
 
 PImage img;
 public SoundFile file1, file2, file3, file4, file5, file6;;
@@ -103,7 +104,8 @@ public void draw() {
     text("Press 'P' in order to start single player game", width/2 - 190, height/2 + 30);
     text("Press 'T' in order to start co-op game", width/2 - 170, height/2 + 70);
   }
-  else{
+  else if (alive){
+  alive = basis.ghostDetection(G, B, R);
   for (Square[] row: game) {
     for (Square block: row) {
       // System.out.println(block.xcor() + " " + block.ycor())
@@ -173,11 +175,16 @@ public void draw() {
     second.checkMoves();
   }
   basis.checkMoves();
-  }
   
   R.makeMove();
   G.makeMove();
   B.makeMove();
+}
+else{
+  text("Haha loser you died", width/2 - 190, height/2 + 30);
+  text(getScore(), width/2 - 190, height/2 + 70);
+  //text(getScore2(), width/2 - 190, height/2 + 100);
+}
 }
 
 public void keyPressed() {
