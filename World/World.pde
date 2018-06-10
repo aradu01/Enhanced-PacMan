@@ -1,20 +1,26 @@
 import java.util.*;
 import processing.sound.*;
+
 public Ghost monster = new Ghost();
 public GreenGhost G = new GreenGhost();
 public BlueGhost B = new BlueGhost();
 public RedGhost R = new RedGhost();
+
 public Maze mboy;
 public Square[][] game;
+
 public ArrayList<Square> checked = new ArrayList<Square>();
 public PacMan basis = new PacMan();
 public PacMan2 second = new PacMan2();
+
 public String[] temp;
 public float score, score2;
 PFont f;
+
 public boolean las, laze, las2, laze2;
 public Laser l, l2;
 public boolean screen, played, twoscreen;
+
 PImage img;
 public SoundFile file1, file2, file3, file4, file5, file6;;
 
@@ -24,8 +30,12 @@ public final int SPEED2 = 20;
 public void setup() {
   size(600, 600);
   frameRate(10);
+  
+  //System.out.print(show(arr));
+
   game = new Square[30][30];
   mboy = new Maze("Sample.txt");
+  
   file1 = new SoundFile(this, "Pacman_Intro.wav");
   file2 = new SoundFile(this, "Pacman_Waka_Waka.wav");
   file3 = new SoundFile(this, "pacman_death.wav");
@@ -48,6 +58,7 @@ public void setup() {
       checked.add(game[r][c]);
     }
   }
+ 
  /* for (Square[] row: game) {
     for (Square block: row) {
     // System.out.println(block.xcor() + " " + block.ycor());
@@ -59,22 +70,27 @@ public void setup() {
       ellipse(block.xcor() + 10, block.ycor() + 10, 13, 13);
       fill(block.getColor());
     }
+    }
   }
- 
-}*/
+*/
 }
+
 public void updateScore(){
-  score+= 100;
+  score += 100;
 }
+
 public void updateScore2(){
   score2+= 100;
 }
+
 public String getScore(){
   return "" + score;
 }
+
 public String getScore2(){
   return "" + score2;
 }
+
 public void draw() {  
   background(0,0,0);
   if(!played && millis() > 4000){
@@ -158,6 +174,10 @@ public void draw() {
   }
   basis.checkMoves();
   }
+  
+  R.makeMove();
+  G.makeMove();
+  B.makeMove();
 }
 
 public void keyPressed() {

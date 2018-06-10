@@ -1,4 +1,5 @@
 public char[][] arr;
+
 public class Maze{
   public Maze(String filename){
     String[] temp = loadStrings(filename);

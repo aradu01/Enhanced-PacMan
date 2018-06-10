@@ -1,13 +1,16 @@
+/*
 public int greenX;
 public int greenY;
+*/
 
 public class GreenGhost extends Ghost {
   
   public GreenGhost() {
-    greenX = 310;
-    greenY = 310;
+    ghostX = 310;
+    ghostY = 310;
   }
   
+  /*
   public void greenX(int value) {
     greenX += value;
   }
@@ -15,5 +18,6 @@ public class GreenGhost extends Ghost {
   public void greenY(int value) {
     greenY += value;
   }
+  */
   
 }
