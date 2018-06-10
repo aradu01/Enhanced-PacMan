@@ -144,11 +144,13 @@ public class PacMan {
     }
   }
   public boolean ghostDetection(Ghost first, Ghost second, Ghost third){
+    if(c == color(255,255,0)){
     if((Math.abs(X - first.getX()) < 30 && Math.abs(Y- first.getY()) < 30) ||
       (Math.abs(X - second.getX()) < 30 && Math.abs(Y- second.getY()) < 30) || 
       (Math.abs(X - third.getX()) < 30 && Math.abs(Y- third.getY()) < 30)){
          return false;
       }
+    }
       return true;
 }
     }

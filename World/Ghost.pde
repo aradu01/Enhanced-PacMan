@@ -34,6 +34,7 @@ public class Ghost {
   */
   public void checkPac(PacMan P){
     if(Math.abs(ghostX - P.x()) < 30 && Math.abs(ghostY - P.y()) < 30){
+      c = cd;
     }
   }
   

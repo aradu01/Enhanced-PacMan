@@ -184,9 +184,14 @@ public void draw() {
   }
   basis.checkMoves();
   
+  R.checkPac(basis);
+  G.checkPac(basis);
+  B.checkPac(basis);
+  
   R.makeMove();
   G.makeMove();
   B.makeMove();
+ 
 }
 else{
   text("Haha loser you died", width/2 - 190, height/2 + 30);
