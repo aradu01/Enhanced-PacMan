@@ -181,6 +181,15 @@ public void draw() {
         updateScore2();
       }
     }
+    basis.decreaseTimer();
+    second.decreaseTimer();
+    
+    if(basis.getTimer() <= 0 && alive){
+      basis.setC(color(255, 255, 0));
+    }
+    if(second.getTimer() <= 0 && alive2){
+      second.setC(color(200,0,100));
+    }
     R.decreaseTimer();
     G.decreaseTimer();
     B.decreaseTimer();
@@ -333,7 +342,12 @@ else if (!twoscreen){
   G.checkPac(basis);
   B.checkPac(basis);
   
+  basis.decreaseTimer();
  
+ if(basis.getTimer() <= 0 && alive){
+      basis.setC(color(255, 255, 0));
+    }
+    
   if(laze){
     R.checkLaser(l);
     G.checkLaser(l);

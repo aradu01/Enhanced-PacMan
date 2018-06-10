@@ -5,7 +5,13 @@ public float yspeed = 0;
 public boolean isLas;
 
 public class PacMan {
-  
+  public float timer;
+   public void decreaseTimer(){
+    timer--;
+  }
+  public float getTimer(){
+    return timer;
+  }
   public color c = color(255, 255, 0);
   
   /*
@@ -78,6 +84,7 @@ public class PacMan {
   
   public void enrage(){
     c = color(255, 0, 0);
+    timer = 50;
   }
   public void pacManSetUp() {
     fill(c);

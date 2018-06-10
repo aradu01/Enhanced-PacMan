@@ -14,7 +14,7 @@ public class Square {
     isRect = rect;
   }
   public boolean checkPac(PacMan P, SoundFile file){
-    if(c == color(0,0,0)){
+    if(c == color(0,0,0) || P.getcolor() == color(0,0,0)){
       return false;
     }
     if(!getRect() && Math.abs(P.x() - x) < 15 && Math.abs(P.y() - y) < 15
@@ -36,7 +36,7 @@ public class Square {
     return false;
   }
   public boolean checkPac(PacMan2 P, SoundFile file){
-    if(c == color(0,0,0)){
+    if(c == color(0,0,0) || P.getcolor() == color(0,0,0)){
       return false;
     }
     if(!getRect() && Math.abs(P.x() - x) < 15 && Math.abs(P.y() - y) < 15
