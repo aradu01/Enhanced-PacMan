@@ -82,13 +82,128 @@ public class PacMan {
   private float upper = TWO_PI - QUARTER_PI; // + rotating;
   private float increment = .1;
   
+  public int direction = 0;
+  
   public void enrage(){
     c = color(255, 0, 0);
     timer = 50;
   }
+  
+  public void turn(int value) {
+    if (direction == 0) {
+      if (value == 0) {
+        fill(c);
+        arc(X, Y, 20, 20, lower, upper);
+      }
+      
+      else if (value == 1) {
+        pushMatrix();
+        rotate(PI/2);
+        fill(c);
+        arc(X, Y, 20, 20, lower, upper);
+        popMatrix();
+      }
+      
+      else if (value == 2) {
+        pushMatrix();
+        rotate(PI);
+        fill(c);
+        arc(X, Y, 20, 20, lower, upper);
+        popMatrix();
+      }
+      
+      else if (value == 3) {
+        pushMatrix();
+        rotate(PI + PI / 2);
+        fill(c);
+        arc(X, Y, 20, 20, lower, upper);
+        popMatrix();
+      }
+    }
+    
+    else if (direction == 1) {
+      if (value == 0) {
+        pushMatrix();
+        rotate(PI + PI/2);
+        fill(c);
+        arc(X, Y, 20, 20, lower, upper);
+        popMatrix();
+      }
+      
+      else if (value == 2) {
+        pushMatrix();
+        rotate(PI/2);
+        fill(c);
+        arc(X, Y, 20, 20, lower, upper);
+        popMatrix();
+      }
+      
+      else if (value == 3) {
+        pushMatrix();
+        rotate(PI);
+        fill(c);
+        arc(X, Y, 20, 20, lower, upper);
+        popMatrix();
+      }
+    }
+    
+    else if (direction == 2) {
+      if (value == 0) {
+        pushMatrix();
+        rotate(PI);
+        fill(c);
+        arc(X, Y, 20, 20, lower, upper);
+        popMatrix();
+      }
+      
+      else if (value == 1) {
+        pushMatrix();
+        rotate(PI + PI/2);
+        fill(c);
+        arc(X, Y, 20, 20, lower, upper);
+        popMatrix();
+      }
+      
+      else if (value == 3) {
+        pushMatrix();
+        rotate(PI / 2);
+        fill(c);
+        arc(X, Y, 20, 20, lower, upper);
+        popMatrix();
+      }
+    }
+    
+    else if (direction == 3) {
+      if (value == 0) {
+        pushMatrix();
+        rotate(PI/2);
+        fill(c);
+        arc(X, Y, 20, 20, lower, upper);
+        popMatrix();
+      }
+      
+      else if (value == 1) {
+        pushMatrix();
+        rotate(PI);
+        fill(c);
+        arc(X, Y, 20, 20, lower, upper);
+        popMatrix();
+      }
+      
+      else if (value == 2) {
+        pushMatrix();
+        rotate(PI + PI / 2);
+        fill(c);
+        arc(X, Y, 20, 20, lower, upper);
+        popMatrix();
+      }
+    }
+    
+    direction = value;
+  }
+  
   public void pacManSetUp() {
-    fill(c);
-    arc(X, Y, 20, 20, lower, upper);
+    turn(0);
     
     /*
     if (abs(lower - upper) > PI) {

@@ -33,6 +33,7 @@ public final int SPEED2 = 20;
 
 public void setup() {
   size(600, 600);
+  //smooth();
   frameRate(7);
   
   //System.out.print(show(arr));
@@ -383,82 +384,96 @@ public void keyPressed() {
     }
   }
   else{
-  if(key == 'q' && las){
-    laze = true;
-    l = new Laser(basis);
-    l.display();
-  }
-  else if (key == 'w' && Y > 10) {
-    xspeed = 0;
-    yspeed = -SPEED;
-    
-    // basis.changeDirection(-HALF_PI);
-    basis.checkMoves();
-  }
-  
-  else if (key == 'a' && X> 10) {
-    xspeed = -SPEED;
-    yspeed = 0;
-    
-    // basis.changeDirection(PI);
-    basis.checkMoves();
-  }
-  
-  else if (key == 's' && Y < 590) {
-    xspeed = 0;
-    yspeed = SPEED;
-    
-    // basis.changeDirection(HALF_PI);
-    basis.checkMoves();
-  }
-  
-  else if (key == 'd' && X < 590) {
-    xspeed = SPEED;
-    yspeed = 0;
-    
-    // basis.changeDirection(0);
-    basis.checkMoves();
-  }
-  if(twoscreen){
-    if(key == 'l' && las2){
-    laze2 = true;
-    l2 = new Laser(second);
-    l2.display();
+    if(key == 'q' && las){
+      laze = true;
+      l = new Laser(basis);
+      l.display();
     }
-    else if(key == CODED){
-    if (keyCode == UP && Y2 > 10) {
-    xspeed2 = 0;
-    yspeed2 = -SPEED2;
     
-    // basis.changeDirection(-HALF_PI);
-    second.checkMoves();
-  }
+    else if (key == 'w' && Y > 10) {
+      basis.turn(0);
+      
+      xspeed = 0;
+      yspeed = -SPEED;
+    
+      // basis.changeDirection(-HALF_PI);
+      basis.checkMoves();
+      
+      pushMatrix();
+      rotate(PI/2);
+      //popMatrix();
+    }
   
-  else if (keyCode == LEFT && X2 > 10) {
-    xspeed2 = -SPEED2;
-    yspeed2 = 0;
+    else if (key == 'a' && X> 10) {
+      basis.turn(3);
+      
+      xspeed = -SPEED;
+      yspeed = 0;
     
-    // basis.changeDirection(PI);
-    second.checkMoves();
-  }
+      // basis.changeDirection(PI);
+      basis.checkMoves();
+    }
   
-  else if (keyCode == DOWN && Y2 < 590) {
-    xspeed2 = 0;
-    yspeed2 = SPEED2;
+    else if (key == 's' && Y < 590) {
+      basis.turn(2);
+      
+      xspeed = 0;
+      yspeed = SPEED;
     
-    // basis.changeDirection(HALF_PI);
-    second.checkMoves();
-  }
+      // basis.changeDirection(HALF_PI);
+      basis.checkMoves();
+    }
   
-  else if (keyCode == RIGHT && X2 < 590) {
-    xspeed2 = SPEED2;
-    yspeed2 = 0;
-    
-    // basis.changeDirection(0);
-    second.checkMoves();
-  }
-  }
-  }
+    else if (key == 'd' && X < 590) {
+      basis.turn(1);
+      
+      xspeed = SPEED;
+      yspeed = 0;
+      
+      // basis.changeDirection(0);
+      basis.checkMoves();
+    }
+    if(twoscreen){
+      if(key == 'l' && las2){
+        laze2 = true;
+        l2 = new Laser(second);
+        l2.display();
+      }
+      
+      else if(key == CODED){
+        if (keyCode == UP && Y2 > 10) {
+          xspeed2 = 0;
+          yspeed2 = -SPEED2;
+      
+          // basis.changeDirection(-HALF_PI);
+          second.checkMoves();
+        }
+  
+        else if (keyCode == LEFT && X2 > 10) {
+          xspeed2 = -SPEED2;
+          yspeed2 = 0;
+          
+          // basis.changeDirection(PI);
+          second.checkMoves();
+        }
+  
+        else if (keyCode == DOWN && Y2 < 590) {
+          xspeed2 = 0;
+          yspeed2 = SPEED2;
+          
+          // basis.changeDirection(HALF_PI);
+          second.checkMoves();
+        }
+        
+        else if (keyCode == RIGHT && X2 < 590) {
+          xspeed2 = SPEED2;
+          yspeed2 = 0;
+          
+          // basis.changeDirection(0);
+          second.checkMoves();
+        }
+      }
+    }
   }
 
 }
