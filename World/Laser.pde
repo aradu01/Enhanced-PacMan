@@ -37,8 +37,25 @@ public class Laser{
     return y;
   }
   public void display(){
-    ellipse(x, y, 20, 20);
+    float horizontal = x;
+    float vertical = y;
+    if (xspeed > 0) {
+      horizontal -= 20;
+    }
+    
+    else if (xspeed < 0) {
+      horizontal += 20;
+    }
+    
+    else if (yspeed > 0) {
+      vertical -= 20;
+    }
+    
+    else if (yspeed < 0) {
+      vertical += 20;
+    }
+    
     fill(color(255,0,0));
+    ellipse(horizontal, vertical, 20, 20);
   }
 }
-    
