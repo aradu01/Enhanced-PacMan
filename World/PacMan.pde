@@ -9,6 +9,7 @@ public class PacMan {
    public void decreaseTimer(){
     timer--;
   }
+  
   public float getTimer(){
     return timer;
   }
@@ -311,6 +312,7 @@ public class PacMan {
       yspeed = 0;
     }
   }
+  
   public boolean ghostDetection(Ghost first, Ghost second, Ghost third){
     if(c == color(255,255,0)){
     if((Math.abs(X - first.getX()) < 30 && Math.abs(Y- first.getY()) < 30 && first.getColor() != color(0,0,0)) ||

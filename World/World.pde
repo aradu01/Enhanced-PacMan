@@ -396,13 +396,15 @@ public void keyPressed() {
     
     else if (key == 'w' && Y > 10) {
       //basis.turn(0);
-      basis.direction = 0;
+      if (game[(int) (X / 20)][(int) ((Y - SPEED) / 20)].getColor() != color(0, 0, 255)) {
+        basis.direction = 0;
+        
+        xspeed = 0;
+        yspeed = -SPEED;
       
-      xspeed = 0;
-      yspeed = -SPEED;
-    
-      // basis.changeDirection(-HALF_PI);
-      basis.checkMoves();
+        // basis.changeDirection(-HALF_PI);
+        basis.checkMoves();
+      }
       
       //pushMatrix();
       //rotate(PI/2);
@@ -411,37 +413,47 @@ public void keyPressed() {
   
     else if (key == 'a' && X> 10) {
       //basis.turn(3);
-      basis.direction = 3;
       
-      xspeed = -SPEED;
-      yspeed = 0;
-    
-      // basis.changeDirection(PI);
-      basis.checkMoves();
+      if (game[(int) ((X - SPEED) / 20)][(int) (Y / 20)].getColor() != color(0, 0, 255)) {
+        basis.direction = 3;
+        
+        xspeed = -SPEED;
+        yspeed = 0;
+      
+        // basis.changeDirection(PI);
+        basis.checkMoves();
+      }
     }
   
     else if (key == 's' && Y < 590) {
       //basis.turn(2);
-      basis.direction = 2;
       
-      xspeed = 0;
-      yspeed = SPEED;
-    
-      // basis.changeDirection(HALF_PI);
-      basis.checkMoves();
+      if (game[(int) (X / 20)][(int) ((Y + SPEED) / 20)].getColor() != color(0, 0, 255)) {
+        basis.direction = 2;
+        
+        xspeed = 0;
+        yspeed = SPEED;
+      
+        // basis.changeDirection(HALF_PI);
+        basis.checkMoves();
+      }
     }
   
     else if (key == 'd' && X < 590) {
       //basis.turn(1);
-      basis.direction = 1;
-      
-      xspeed = SPEED;
-      yspeed = 0;
-      
-      // basis.changeDirection(0);
-      basis.checkMoves();
+      if (game[(int) ((X + SPEED) / 20)][(int) (Y / 20)].getColor() != color(0, 0, 255)) {
+        basis.direction = 1;
+        
+        xspeed = SPEED;
+        yspeed = 0;
+        
+        // basis.changeDirection(0);
+        basis.checkMoves();
+      }
     }
+    
     if(twoscreen){
+      
       if(key == 'l' && las2){
         laze2 = true;
         l2 = new Laser(second);
