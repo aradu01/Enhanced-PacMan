@@ -24,7 +24,7 @@ public boolean alive = true;
 public boolean alive2 = true;
 public boolean al1 = true;
 public boolean al2 = true;
-public float timerR, timerG, timerB, timerP1, timerP2;
+//public float timerR, timerG, timerB, timerP1, timerP2;
 PImage img;
 public SoundFile file1, file2, file3, file4, file5, file6;;
 

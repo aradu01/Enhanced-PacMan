@@ -154,5 +154,8 @@ public class PacMan2 {
     }
       return true;
 }
+public void enrage(){
+    c2 = color(255, 0, 0);
+  }
 
 }
