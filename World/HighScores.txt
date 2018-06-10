@@ -1,0 +1,2 @@
+Highscores:
+4000.0

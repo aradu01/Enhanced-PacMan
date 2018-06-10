@@ -323,5 +323,6 @@ public class PacMan {
       }
     }
       return true;
+  }
+
 }
-    }

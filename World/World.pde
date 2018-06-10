@@ -257,7 +257,19 @@ public void draw() {
     }
 else if (!twoscreen){
   if(!alive){
+    String[] lines = loadStrings("HighScores.txt");
+    String[] result = new String[lines.length + 1];
+    
+    for (int index = 0; index < lines.length; index++) {
+      result[index] = lines[index];
+    }
+    
+    result[result.length - 1] = getScore();
+    
     file2.stop();
+    saveStrings("HighScores.txt", result);
+
+    exit();
   }
   if (alive){
   alive = basis.ghostDetection(G, B, R);
