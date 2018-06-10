@@ -94,9 +94,14 @@ public String getScore2(){
 
 public void draw() {  
   background(0,0,0);
-  if(!played && millis() > 4000){
+  if(!played){
+    if(millis() > 4000000 || screen){
     file2.loop();
     played = true;
+  }
+  }
+  if(!alive){
+    file2.stop();
   }
   if(!screen){
     image(img, 0, 0, width, height);
