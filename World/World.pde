@@ -190,6 +190,12 @@ public void draw() {
   G.checkPac(basis);
   B.checkPac(basis);
   
+  if(laze){
+  R.checkLaser(l);
+  G.checkLaser(l);
+  B.checkLaser(l);
+  }
+  
   R.makeMove();
   G.makeMove();
   B.makeMove();

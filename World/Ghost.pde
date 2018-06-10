@@ -37,7 +37,11 @@ public class Ghost {
       c = cd;
     }
   }
-  
+  public void checkLaser(Laser P){
+    if(Math.abs(ghostX - P.x()) < 30 && Math.abs(ghostY - P.y()) < 30){
+      c = cd;
+    }
+  }
   private int[][] getMoves(int xcor, int ycor) {
     int[][] answer = new int[4][2];
     
