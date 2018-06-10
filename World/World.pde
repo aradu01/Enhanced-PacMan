@@ -161,6 +161,14 @@ public void draw() {
     
       second.pacManSetUp();
       basis.pacManSetUp();
+      
+      if (alive) {
+        basis.turn();
+      }
+      
+      if (alive2) {
+        second.turn2();
+      }
     
       R.ghostSetUp();
       G.ghostSetUp();
@@ -489,6 +497,8 @@ public void keyPressed() {
       
       else if(key == CODED){
         if (keyCode == UP && Y2 > 10) {
+          second.direction2 = 0;
+          
           xspeed2 = 0;
           yspeed2 = -SPEED2;
       
@@ -497,6 +507,8 @@ public void keyPressed() {
         }
   
         else if (keyCode == LEFT && X2 > 10) {
+          second.direction2 = 3;
+          
           xspeed2 = -SPEED2;
           yspeed2 = 0;
           
@@ -505,6 +517,8 @@ public void keyPressed() {
         }
   
         else if (keyCode == DOWN && Y2 < 590) {
+          second.direction2 = 2;
+          
           xspeed2 = 0;
           yspeed2 = SPEED2;
           
@@ -513,6 +527,8 @@ public void keyPressed() {
         }
         
         else if (keyCode == RIGHT && X2 < 590) {
+          second.direction2 = 1;
+          
           xspeed2 = SPEED2;
           yspeed2 = 0;
           
