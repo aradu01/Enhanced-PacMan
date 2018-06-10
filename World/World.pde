@@ -24,7 +24,7 @@ public boolean alive = true;
 public boolean alive2 = true;
 public boolean al1 = true;
 public boolean al2 = true;
-
+public float timerR, timerG, timerB, timerP1, timerP2;
 PImage img;
 public SoundFile file1, file2, file3, file4, file5, file6;;
 
@@ -181,7 +181,18 @@ public void draw() {
         updateScore2();
       }
     }
-    
+    R.decreaseTimer();
+    G.decreaseTimer();
+    B.decreaseTimer();
+    if(R.getTimer() <= 0){
+      R.revive();
+    }
+    if(G.getTimer() <= 0){
+      G.revive();
+    }
+    if(B.getTimer() <= 0){
+      B.revive();
+    }
     fill(255, 0, 0);
     text("P1SCORE:" + getScore(), 30, 40);
     text("P2SCORE:" + getScore2(), 400, 40);
@@ -269,6 +280,19 @@ else if (!twoscreen){
   R.ghostSetUp();
   G.ghostSetUp();
   B.ghostSetUp();
+  
+  R.decreaseTimer();
+  G.decreaseTimer();
+  B.decreaseTimer();
+  if(R.getTimer() <= 0){
+      R.revive();
+    }
+  if(G.getTimer() <= 0){
+      G.revive();
+    }
+  if(B.getTimer() <= 0){
+      B.revive();
+    }
   for(Square squ : checked){
     if(laze && laze2){
       squ.checkLaser(l);

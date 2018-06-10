@@ -4,6 +4,7 @@ public class Ghost {
   protected int ghostY;
   protected color ghostTint;
   public PImage Ghost;
+  public float timer;
   color c;
   //color c1 = color(255, 0, 0);
   //color c2 = color(0, 255, 0);
@@ -36,6 +37,7 @@ public class Ghost {
     if(P.getcolor() == color(255,0,0)){
     if(Math.abs(ghostX - P.x()) < 30 && Math.abs(ghostY - P.y()) < 30){
       c = cd;
+      timer = 15;
     }
     }
   }
@@ -43,8 +45,12 @@ public class Ghost {
     if(P.getcolor() == color(255,0,0)){
     if(Math.abs(ghostX - P.x()) < 30 && Math.abs(ghostY - P.y()) < 30){
       c = cd;
+      timer = 15;
     }
     }
+  }
+  public void decreaseTimer(){
+    timer--;
   }
   public void checkLaser(Laser P){
     if(Math.abs(ghostX - P.x()) < 30 && Math.abs(ghostY - P.y()) < 30){
@@ -126,6 +132,10 @@ public class Ghost {
     ghostY = value;
   }
   
+  public float getTimer(){
+    return timer;
+  }
+    
   public void makeMove() {
     int[][] moves = getMoves((int) getX() / 20, (int) getY() / 20);
     int value = (int) random(0, moves.length);

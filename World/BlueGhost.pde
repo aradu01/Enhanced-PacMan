@@ -11,6 +11,9 @@ public class BlueGhost extends Ghost {
     c = color(0, 0, 255);
   }
   
+  public void revive(){
+    c = color(0,0,255);
+  }
   /*
   public void blueX(int value) {
     blueX += value;
