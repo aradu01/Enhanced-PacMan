@@ -13,6 +13,19 @@ public class Laser{
 
     }
   }
+   public Laser(PacMan2 P){
+    
+    x = P.x();
+    y = P.y();
+    if(P.xspeed() == 0 && P.yspeed()== 0){
+      xlspeed = 40;
+    }
+    else{
+    xlspeed = 2 *P.xspeed();
+    ylspeed = 2 *P.yspeed();
+
+    }
+  }
   public void move(){
     x += 1 * xlspeed;
     y += 1 * ylspeed;

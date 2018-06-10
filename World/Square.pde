@@ -31,8 +31,26 @@ public class Square {
     }
     return false;
   }
+  public boolean checkPac(PacMan2 P, SoundFile file){
+    if(c == color(0,0,0)){
+      return false;
+    }
+    if(!getRect() && Math.abs(P.x() - x) < 15 && Math.abs(P.y() - y) < 15
+    &&(Math.abs(P.x() - x) < 15 || Math.abs(P.y() - y) < 15)){
+     // if(c == color(155, 215, 0)){
+      //  P.laserify();
+      //}
+      if(c == color(255, 215, 0)){
+      P.laserify();
+      file.play();
+    }
+      setColor(color(0,0,0));
+      return true;
+    }
+    return false;
+  }
   public boolean checkLaser(Laser P){
-    if(laze){
+    if(laze || laze2){
     if(c == color(0,0,0)){
       return false;
     }

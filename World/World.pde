@@ -8,16 +8,18 @@ public Maze mboy;
 public Square[][] game;
 public ArrayList<Square> checked = new ArrayList<Square>();
 public PacMan basis = new PacMan();
+public PacMan2 second = new PacMan2();
 public String[] temp;
-public float score;
+public float score, score2;
 PFont f;
-public boolean las, laze;
-public Laser l;
-public boolean screen, played;
+public boolean las, laze, las2, laze2;
+public Laser l, l2;
+public boolean screen, played, twoscreen;
 PImage img;
 public SoundFile file1, file2, file3, file4, file5, file6;;
 
 public final int SPEED = 20;
+public final int SPEED2 = 20;
 
 public void setup() {
   size(600, 600);
@@ -64,8 +66,14 @@ public void setup() {
 public void updateScore(){
   score+= 100;
 }
+public void updateScore2(){
+  score2+= 100;
+}
 public String getScore(){
   return "" + score;
+}
+public String getScore2(){
+  return "" + score2;
 }
 public void draw() {  
   background(0,0,0);
@@ -76,7 +84,8 @@ public void draw() {
   if(!screen){
     image(img, 0, 0, width, height);
     text("PACMAN", width/2 - 45, height/2 - 50);
-    text("Press 'P' in order to start game", width/2 - 135, height/2 + 30);
+    text("Press 'P' in order to start single player game", width/2 - 190, height/2 + 30);
+    text("Press 'P' in order to start co-op game", width/2 - 170, height/2 + 70);
   }
   else{
   for (Square[] row: game) {
@@ -94,19 +103,42 @@ public void draw() {
   }
   }
   las = basis.getLaz();
+  las2 = second.getLaz();
   if(laze){
     l.display();
     l.move();
   }
+  if(laze2){
+    l2.display();
+    l2.move();
+  }
+  if(twoscreen){
+    second.pacManSetUp();
+  }
   basis.pacManSetUp();
   monster.ghostSetUp();
   for(Square squ : checked){
+    if(laze && laze2){
+      squ.checkLaser(l);
+      squ.checkLaser(l2);
+    }
+    else if(laze){
     squ.checkLaser(l);
+    }
+    else if(laze2){
+    squ.checkLaser(l2);
+    }
     if(squ.checkPac(basis, file4)){
       updateScore();
     }
+    if(squ.checkPac(second, file4)){
+      updateScore2();
+    }
   }
-  text("SCORE:" + getScore(), 30, 40);
+  text("P1SCORE:" + getScore(), 30, 40);
+  if(twoscreen){
+    text("P2SCORE:" + getScore2(), 400, 40);
+  }
   fill(color(255, 215, 0));
   //G.makeMove();
   //B.makeMove();
@@ -121,7 +153,9 @@ public void draw() {
   fill(255);
   text(temp[0], 10, 100);
   */
-  
+  if(twoscreen){
+    second.checkMoves();
+  }
   basis.checkMoves();
   }
 }
@@ -130,6 +164,10 @@ public void keyPressed() {
   if(!screen){
     if(key == 'p'){
       screen = true;
+    }
+    if(key == 't'){
+      screen = true;
+      twoscreen = true;
     }
   }
   else{
@@ -168,6 +206,46 @@ public void keyPressed() {
     
     // basis.changeDirection(0);
     basis.checkMoves();
+  }
+  if(twoscreen){
+    if(key == 'o' && las2){
+    laze2 = true;
+    l2 = new Laser(second);
+    l2.display();
+    }
+    else if(key == CODED){
+    if (keyCode == UP && Y2 > 10) {
+    xspeed2 = 0;
+    yspeed2 = -SPEED2;
+    
+    // basis.changeDirection(-HALF_PI);
+    second.checkMoves();
+  }
+  
+  else if (keyCode == LEFT && X2 > 10) {
+    xspeed2 = -SPEED2;
+    yspeed2 = 0;
+    
+    // basis.changeDirection(PI);
+    second.checkMoves();
+  }
+  
+  else if (keyCode == DOWN && Y2 < 590) {
+    xspeed2 = 0;
+    yspeed2 = SPEED2;
+    
+    // basis.changeDirection(HALF_PI);
+    second.checkMoves();
+  }
+  
+  else if (keyCode == RIGHT && X2 < 590) {
+    xspeed2 = SPEED2;
+    yspeed2 = 0;
+    
+    // basis.changeDirection(0);
+    second.checkMoves();
+  }
+  }
   }
   }
 
