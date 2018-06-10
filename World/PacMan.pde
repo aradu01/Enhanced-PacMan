@@ -128,7 +128,8 @@ public class PacMan {
       */
       
       rotate(PI + PI/2);
-      arc(X, Y, 20, 20, lower, upper);
+      fill(c);
+      arc(0, 0, 20, 20, lower, upper);
 
       resetMatrix();
     }
@@ -160,10 +161,13 @@ public class PacMan {
       }
       */
       
+      fill(c);
       arc(X, Y, 20, 20, lower, upper);
     }
     
     else if (direction == 2) {
+      translate(X, Y);
+      
       /*
       if (value == 0) {
         pushMatrix();
@@ -190,10 +194,17 @@ public class PacMan {
       }
       */
       
+      
       rotate(PI/2);
+      fill(c);
+      arc(0, 0, 20, 20, lower, upper);
+
+      resetMatrix();
     }
     
     else if (direction == 3) {
+      translate(X, Y);
+      
       /*
       if (value == 0) {
         pushMatrix();
@@ -220,11 +231,15 @@ public class PacMan {
       }
       */
       
+      
       rotate(PI);
+      fill(c);
+      arc(0, 0, 20, 20, lower, upper);
+
+      resetMatrix();
     }
     
     //direction = value;
-    fill(c);
     
     //translate(0, 0);
     //popMatrix();
