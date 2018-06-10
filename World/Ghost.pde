@@ -114,6 +114,10 @@ public class Ghost {
     return ghostY;
   }
   
+  public color getColor(){
+    return c;
+  }
+  
   public void setX(int value) {
     ghostX = value;
   }

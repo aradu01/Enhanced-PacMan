@@ -145,9 +145,9 @@ public class PacMan2 {
   }
   public boolean ghostDetection(Ghost first, Ghost second, Ghost third){
     if(c2 == color(200, 0, 100)){
-    if((Math.abs(X2 - first.getX()) < 30 && Math.abs(Y2- first.getY()) < 30) ||
-      (Math.abs(X2 - second.getX()) < 30 && Math.abs(Y2- second.getY()) < 30) || 
-      (Math.abs(X2 - third.getX()) < 30 && Math.abs(Y2- third.getY()) < 30)){
+    if((Math.abs(X2 - first.getX()) < 30 && Math.abs(Y2- first.getY()) < 30 && first.getColor() != color(0,0,0)) ||
+      (Math.abs(X2 - second.getX()) < 30 && Math.abs(Y2- second.getY()) < 30 && first.getColor() != color(0,0,0)) || 
+      (Math.abs(X2 - third.getX()) < 30 && Math.abs(Y2- third.getY()) < 30 && first.getColor() != color(0,0,0))){
         c2 = color(0,0,0);
          return false;
       }
