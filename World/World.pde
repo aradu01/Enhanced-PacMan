@@ -34,7 +34,7 @@ public void setup() {
   //System.out.print(show(arr));
 
   game = new Square[30][30];
-  mboy = new Maze("Sample.txt");
+  mboy = new Maze("Sample2.txt");
   
   file1 = new SoundFile(this, "Pacman_Intro.wav");
   file2 = new SoundFile(this, "Pacman_Waka_Waka.wav");
@@ -101,7 +101,7 @@ public void draw() {
     image(img, 0, 0, width, height);
     text("PACMAN", width/2 - 45, height/2 - 50);
     text("Press 'P' in order to start single player game", width/2 - 190, height/2 + 30);
-    text("Press 'P' in order to start co-op game", width/2 - 170, height/2 + 70);
+    text("Press 'T' in order to start co-op game", width/2 - 170, height/2 + 70);
   }
   else{
   for (Square[] row: game) {
