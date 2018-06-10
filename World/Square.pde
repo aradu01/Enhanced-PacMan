@@ -26,6 +26,10 @@ public class Square {
       P.laserify();
       file.play();
     }
+    if(c == color(100,100,215)){
+      file.play();
+      P.enrage();
+    }
       setColor(color(0,0,0));
       return true;
     }

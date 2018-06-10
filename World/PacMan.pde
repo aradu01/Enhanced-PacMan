@@ -72,7 +72,10 @@ public class PacMan {
   private float lower = QUARTER_PI; // + rotating;
   private float upper = TWO_PI - QUARTER_PI; // + rotating;
   private float increment = .1;
- 
+  
+  public void enrage(){
+    c = color(255, 0, 0);
+  }
   public void pacManSetUp() {
     fill(c);
     arc(X, Y, 20, 20, lower, upper);

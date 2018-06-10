@@ -139,7 +139,9 @@ public void draw() {
     second.pacManSetUp();
   }
   basis.pacManSetUp();
-  monster.ghostSetUp();
+  R.ghostSetUp();
+  G.ghostSetUp();
+  B.ghostSetUp();
   for(Square squ : checked){
     if(laze && laze2){
       squ.checkLaser(l);
@@ -158,6 +160,7 @@ public void draw() {
       updateScore2();
     }
   }
+  fill(255, 0, 0);
   text("P1SCORE:" + getScore(), 30, 40);
   if(twoscreen){
     text("P2SCORE:" + getScore2(), 400, 40);

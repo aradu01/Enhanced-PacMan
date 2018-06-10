@@ -4,6 +4,12 @@ public class Ghost {
   protected int ghostY;
   protected color ghostTint;
   public PImage Ghost;
+  color c;
+  //color c1 = color(255, 0, 0);
+  //color c2 = color(0, 255, 0);
+  //color c3 = color(0, 0, 255);
+  color cd = color(0, 0, 0);
+  
   
   /*
   public Ghost(int x, int y, color c) {
@@ -26,6 +32,10 @@ public class Ghost {
     return tint;
   }
   */
+  public void checkPac(PacMan P){
+    if(Math.abs(ghostX - P.x()) < 30 && Math.abs(ghostY - P.y()) < 30){
+    }
+  }
   
   private int[][] getMoves(int xcor, int ycor) {
     int[][] answer = new int[4][2];
@@ -109,23 +119,23 @@ public class Ghost {
   }
   
   public void ghostSetUp() {
-    fill(255, 0, 0);
+    fill(c);
     //rotate(HALF_PI);
-    arc(R.getX(), R.getY(), 25, 25, PI, 2 *PI);
+    arc(ghostX, ghostY, 25, 25, PI, 2 *PI);
     //ellipse(R.getX(), R.getY(), 20, 20);
-    ellipse(R.getX() - 10, R.getY() +3, 7, 7);
-    ellipse(R.getX() - 3.5, R.getY() + 3, 7, 7);
+    ellipse(ghostX - 10, ghostY +3, 7, 7);
+    ellipse(ghostX - 3.5, ghostY + 3, 7, 7);
     //ellipse(R.getX(), R.getY() + 8, 7, 7);
-    ellipse(R.getX() + 3.5, R.getY() + 3, 7, 7);
-    ellipse(R.getX() + 10, R.getY() + 3, 7, 7);
+    ellipse(ghostX + 3.5, ghostY + 3, 7, 7);
+    ellipse(ghostX + 10, ghostY + 3, 7, 7);
     fill(255, 255,255);
-    ellipse(R.getX() - 6, R.getY() - 6, 8, 8);
-    ellipse(R.getX() + 6, R.getY() - 6, 8, 8);
+    ellipse(ghostX - 6, ghostY - 6, 8, 8);
+    ellipse(ghostX + 6, ghostY - 6, 8, 8);
     fill(0,0,0);
-    ellipse(R.getX() - 6, R.getY() - 6, 2, 2);
-    ellipse(R.getX() + 6, R.getY() - 6, 2, 2);
+    ellipse(ghostX - 6, ghostY - 6, 2, 2);
+    ellipse(ghostX + 6, ghostY - 6, 2, 2);
     
-    fill(0, 255, 0);
+    /*fill(c2);
     arc(G.getX(), G.getY(), 25, 25, PI, 2 *PI);
     //ellipse(R.getX(), R.getY(), 20, 20);
     ellipse(G.getX() - 10, G.getY() +3, 7, 7);
@@ -140,7 +150,7 @@ public class Ghost {
     ellipse(G.getX() - 6, G.getY() - 6, 2, 2);
     ellipse(G.getX() + 6, G.getY() - 6, 2, 2);
     
-    fill(0, 0, 255);
+    fill(c3);
     arc(B.getX(), B.getY(), 25, 25, PI, 2 *PI);
     //ellipse(R.getX(), R.getY(), 20, 20);
     ellipse(B.getX() - 10, B.getY() +3, 7, 7);
@@ -154,6 +164,7 @@ public class Ghost {
     fill(0,0,0);
     ellipse(B.getX() - 6, B.getY() - 6, 2, 2);
     ellipse(B.getX() + 6, B.getY() - 6, 2, 2);
+    */
   }
   
 }

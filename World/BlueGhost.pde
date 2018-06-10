@@ -8,6 +8,7 @@ public class BlueGhost extends Ghost {
   public BlueGhost() {
     ghostX = 350;
     ghostY = 310;
+    c = color(0, 0, 255);
   }
   
   /*
