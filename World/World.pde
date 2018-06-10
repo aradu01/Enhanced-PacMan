@@ -212,7 +212,8 @@ public void keyPressed() {
     l2 = new Laser(second);
     l2.display();
     }
-    else if (key == 'u' && Y2 > 10) {
+    else if(key == CODED){
+    if (keyCode == UP && Y2 > 10) {
     xspeed2 = 0;
     yspeed2 = -SPEED2;
     
@@ -220,7 +221,7 @@ public void keyPressed() {
     second.checkMoves();
   }
   
-  else if (key == 'h' && X2 > 10) {
+  else if (keyCode == LEFT && X2 > 10) {
     xspeed2 = -SPEED2;
     yspeed2 = 0;
     
@@ -228,7 +229,7 @@ public void keyPressed() {
     second.checkMoves();
   }
   
-  else if (key == 'j' && Y2 < 590) {
+  else if (keyCode == DOWN && Y2 < 590) {
     xspeed2 = 0;
     yspeed2 = SPEED2;
     
@@ -236,12 +237,13 @@ public void keyPressed() {
     second.checkMoves();
   }
   
-  else if (key == 'k' && X2 < 590) {
+  else if (keyCode == RIGHT && X2 < 590) {
     xspeed2 = SPEED2;
     yspeed2 = 0;
     
     // basis.changeDirection(0);
     second.checkMoves();
+  }
   }
   }
   }
