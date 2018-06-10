@@ -51,7 +51,7 @@ public void setup() {
   mboy.mazeSetUp(game);
   img = loadImage("Pac-man.png");
   f = createFont("Arial", 16, true);
-  textFont(f, 24);
+  textFont(f, 26);
   fill(255);
   
  // f = createFont("Arial", 16, true);
@@ -105,9 +105,13 @@ public void draw() {
   }
   if(!screen){
     image(img, 0, 0, width, height);
-    text("PACMAN", width/2 - 45, height/2 - 50);
-    text("Press 'P' in order to start single player game", width/2 - 190, height/2 + 30);
-    text("Press 'T' in order to start co-op game", width/2 - 170, height/2 + 70);
+    fill(255, 255, 255);
+    text("PACMAN", width/2 - 60, height/2 - 230);
+    text("Press 'P' in order to start single player game", width/2 - 250, height/2 - 150 );
+    text("Press 'T' in order to start co-op game", width/2 - 220, height/2 + -100);
+    text("As P1, shoot laser (when powered up) with 'Q'", width/2 - 250, height/2 + 70);
+    text("As P2, shoot laser (when powered up) with 'L'", width/2 - 250, height/2 + 110);
+    //text("Press 'T' in order to start co-op game", width/2 - 170, height/2 + 70);
   }
   else if (twoscreen){
     
@@ -378,7 +382,7 @@ public void keyPressed() {
     basis.checkMoves();
   }
   if(twoscreen){
-    if(key == 'o' && las2){
+    if(key == 'l' && las2){
     laze2 = true;
     l2 = new Laser(second);
     l2.display();
