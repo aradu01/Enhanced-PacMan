@@ -269,6 +269,21 @@ else if (!twoscreen){
     file2.stop();
     saveStrings("HighScores.txt", result);
 
+    delay(1000);
+    
+    background(0);
+    int spot = 120;
+    
+    text("High Scores", width / 2 - 190, 100);
+    
+    for (int i = 0; i < 10 && i < result.length; i++) {
+      text(result[i], width / 2 - 190, spot);
+      
+      spot += 20;
+    }
+    
+    delay(5000);
+    
     exit();
   }
   if (alive){
