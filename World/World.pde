@@ -110,6 +110,7 @@ public void draw() {
     text("Press 'T' in order to start co-op game", width/2 - 170, height/2 + 70);
   }
   else if (alive){
+    //if(twoscreen)
   alive = basis.ghostDetection(G, B, R);
   for (Square[] row: game) {
     for (Square block: row) {
@@ -190,10 +191,20 @@ public void draw() {
   G.checkPac(basis);
   B.checkPac(basis);
   
+  if(twoscreen){
+    R.checkPac(second);
+    G.checkPac(second);
+    B.checkPac(second);
+  }
   if(laze){
-  R.checkLaser(l);
-  G.checkLaser(l);
-  B.checkLaser(l);
+    R.checkLaser(l);
+    G.checkLaser(l);
+    B.checkLaser(l);
+  }
+  if(laze2){
+    R.checkLaser(l2);
+    G.checkLaser(l2);
+    B.checkLaser(l2);
   }
   
   R.makeMove();

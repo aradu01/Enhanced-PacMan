@@ -59,6 +59,9 @@ public class PacMan {
   public float yspeed(){
     return yspeed;
   }
+  public color getcolor(){
+    return c;
+  }
   public void checkOthers(Square[][] game){
     for (int r = 0; r < game.length; r++) {
       for (int c = 0; c < game[0].length; c++) {
@@ -148,6 +151,7 @@ public class PacMan {
     if((Math.abs(X - first.getX()) < 30 && Math.abs(Y- first.getY()) < 30) ||
       (Math.abs(X - second.getX()) < 30 && Math.abs(Y- second.getY()) < 30) || 
       (Math.abs(X - third.getX()) < 30 && Math.abs(Y- third.getY()) < 30)){
+         c = color(0,0,0);
          return false;
       }
     }

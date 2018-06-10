@@ -33,8 +33,17 @@ public class Ghost {
   }
   */
   public void checkPac(PacMan P){
+    if(P.getcolor() == color(255,0,0)){
     if(Math.abs(ghostX - P.x()) < 30 && Math.abs(ghostY - P.y()) < 30){
       c = cd;
+    }
+    }
+  }
+  public void checkPac(PacMan2 P){
+    if(P.getcolor() == color(255,0,0)){
+    if(Math.abs(ghostX - P.x()) < 30 && Math.abs(ghostY - P.y()) < 30){
+      c = cd;
+    }
     }
   }
   public void checkLaser(Laser P){

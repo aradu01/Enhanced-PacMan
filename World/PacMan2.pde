@@ -59,6 +59,9 @@ public class PacMan2 {
   public float yspeed(){
     return yspeed2;
   }
+  public color getcolor(){
+    return c2;
+  }
   public void checkOthers(Square[][] game){
     for (int r = 0; r < game.length; r++) {
       for (int c = 0; c < game[0].length; c++) {
@@ -140,5 +143,16 @@ public class PacMan2 {
       yspeed2 = 0;
     }
   }
+  public boolean ghostDetection(Ghost first, Ghost second, Ghost third){
+    if(c2 == color(200, 0, 100)){
+    if((Math.abs(X - first.getX()) < 30 && Math.abs(Y- first.getY()) < 30) ||
+      (Math.abs(X - second.getX()) < 30 && Math.abs(Y- second.getY()) < 30) || 
+      (Math.abs(X - third.getX()) < 30 && Math.abs(Y- third.getY()) < 30)){
+        c2 = color(0,0,0);
+         return false;
+      }
+    }
+      return true;
+}
 
 }
