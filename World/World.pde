@@ -128,10 +128,12 @@ public void draw() {
   las = basis.getLaz();
   las2 = second.getLaz();
   if(laze){
+    fill(color(255, 215, 0));
     l.display();
     l.move();
   }
   if(laze2){
+    fill(color(255, 215, 0));
     l2.display();
     l2.move();
   }
