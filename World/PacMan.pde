@@ -82,15 +82,21 @@ public class PacMan {
   private float upper = TWO_PI - QUARTER_PI; // + rotating;
   private float increment = .1;
   
-  public int direction = 0;
+  public int direction = 1;
   
   public void enrage(){
     c = color(255, 0, 0);
     timer = 50;
   }
   
-  public void turn(int value) {
+  public void turn() {
+    //pushMatrix();
+    //translate(X, Y);
+    
     if (direction == 0) {
+      translate(X, Y);
+      
+      /*
       if (value == 0) {
         fill(c);
         arc(X, Y, 20, 20, lower, upper);
@@ -119,9 +125,16 @@ public class PacMan {
         arc(X, Y, 20, 20, lower, upper);
         popMatrix();
       }
+      */
+      
+      rotate(PI + PI/2);
+      arc(X, Y, 20, 20, lower, upper);
+
+      resetMatrix();
     }
     
     else if (direction == 1) {
+      /*
       if (value == 0) {
         pushMatrix();
         rotate(PI + PI/2);
@@ -145,9 +158,13 @@ public class PacMan {
         arc(X, Y, 20, 20, lower, upper);
         popMatrix();
       }
+      */
+      
+      arc(X, Y, 20, 20, lower, upper);
     }
     
     else if (direction == 2) {
+      /*
       if (value == 0) {
         pushMatrix();
         rotate(PI);
@@ -171,9 +188,13 @@ public class PacMan {
         arc(X, Y, 20, 20, lower, upper);
         popMatrix();
       }
+      */
+      
+      rotate(PI/2);
     }
     
     else if (direction == 3) {
+      /*
       if (value == 0) {
         pushMatrix();
         rotate(PI/2);
@@ -197,13 +218,20 @@ public class PacMan {
         arc(X, Y, 20, 20, lower, upper);
         popMatrix();
       }
+      */
+      
+      rotate(PI);
     }
     
-    direction = value;
+    //direction = value;
+    fill(c);
+    
+    //translate(0, 0);
+    //popMatrix();
   }
   
   public void pacManSetUp() {
-    turn(0);
+    //turn(0);
     
     /*
     if (abs(lower - upper) > PI) {

@@ -98,12 +98,14 @@ public String getScore2(){
 
 public void draw() {  
   background(0,0,0);
+  
   if(!played){
     if(millis() > 4000000 || screen){
-    file2.loop();
-    played = true;
+      file2.loop();
+      played = true;
+    }
   }
-  }
+  
   if(!screen){
     image(img, 0, 0, width, height);
     fill(255, 255, 255);
@@ -114,11 +116,11 @@ public void draw() {
     text("As P2, shoot laser (when powered up) with 'L'", width/2 - 250, height/2 + 110);
     //text("Press 'T' in order to start co-op game", width/2 - 170, height/2 + 70);
   }
-  else if (twoscreen){
-    
+  
+  else if (twoscreen){  
     if(!alive && !alive2){
-    file2.stop();
-  }
+      file2.stop();
+    }
     if(!basis.ghostDetection(G, B, R)){
       al1 = false;
     }
@@ -129,130 +131,130 @@ public void draw() {
       alive = al1;
       alive2 = al2;
       
-    for (Square[] row: game) {
-      for (Square block: row) {
-      // System.out.println(block.xcor() + " " + block.ycor())
-       if(block.getRect()){
-        fill(block.getColor());
-        rect(block.xcor(), block.ycor(), 20, 20);
+      for (Square[] row: game) {
+        for (Square block: row) {
+        // System.out.println(block.xcor() + " " + block.ycor())
+         if(block.getRect()){
+          fill(block.getColor());
+          rect(block.xcor(), block.ycor(), 20, 20);
+        }
+        else if (!block.getRect()){
+          fill(block.getColor());
+          ellipse(block.xcor() + 10, block.ycor() + 10, 13, 13);
+        }
       }
-      else if (!block.getRect()){
-        fill(block.getColor());
-        ellipse(block.xcor() + 10, block.ycor() + 10, 13, 13);
       }
-    }
-    }
-    las = basis.getLaz();
-    las2 = second.getLaz();
+      las = basis.getLaz();
+      las2 = second.getLaz();
+      
+      if(laze){
+        fill(color(255, 215, 0));
+        l.display();
+        l.move();
+      }
+      
+      if(laze2){
+        fill(color(255, 215, 0));
+        l2.display();
+        l2.move();
+      }
     
-    if(laze){
+      second.pacManSetUp();
+      basis.pacManSetUp();
+    
+      R.ghostSetUp();
+      G.ghostSetUp();
+      B.ghostSetUp();
+      
+      for(Square squ : checked){
+        if(laze && laze2){
+          squ.checkLaser(l);
+          squ.checkLaser(l2);
+        }
+        else if(laze){
+          squ.checkLaser(l);
+        }
+        else if(laze2){
+          squ.checkLaser(l2);
+        }
+        if(squ.checkPac(basis, file4)){
+          updateScore();
+        }
+        if(squ.checkPac(second, file4)){
+          updateScore2();
+        }
+      }
+      basis.decreaseTimer();
+      second.decreaseTimer();
+      
+      if(basis.getTimer() <= 0 && alive){
+        basis.setC(color(255, 255, 0));
+      }
+      if(second.getTimer() <= 0 && alive2){
+        second.setC(color(200,0,100));
+      }
+      R.decreaseTimer();
+      G.decreaseTimer();
+      B.decreaseTimer();
+      if(R.getTimer() <= 0){
+        R.revive();
+      }
+      if(G.getTimer() <= 0){
+        G.revive();
+      }
+      if(B.getTimer() <= 0){
+        B.revive();
+      }
+      fill(255, 0, 0);
+      text("P1SCORE:" + getScore(), 30, 40);
+      text("P2SCORE:" + getScore2(), 400, 40);
       fill(color(255, 215, 0));
-      l.display();
-      l.move();
-    }
+      //G.makeMove();
+      //B.makeMove();
+      //R.makeMove();
     
-    if(laze2){
-      fill(color(255, 215, 0));
-      l2.display();
-      l2.move();
-    }
-  
-    second.pacManSetUp();
-    basis.pacManSetUp();
-  
-    R.ghostSetUp();
-    G.ghostSetUp();
-    B.ghostSetUp();
+      // basis.checkOthers(game);
+      // System.out.println("xPos: " + xPos + " yPos: " + yPos);
     
-    for(Square squ : checked){
-      if(laze && laze2){
-        squ.checkLaser(l);
-        squ.checkLaser(l2);
-      }
-      else if(laze){
-        squ.checkLaser(l);
-      }
-      else if(laze2){
-        squ.checkLaser(l2);
-      }
-      if(squ.checkPac(basis, file4)){
-        updateScore();
-      }
-      if(squ.checkPac(second, file4)){
-        updateScore2();
-      }
-    }
-    basis.decreaseTimer();
-    second.decreaseTimer();
+      /*
+      background(255,0,0);
+      textFont(f, 16);
+      fill(255);
+      text(temp[0], 10, 100);
+      */
+      
+      second.checkMoves();
+      basis.checkMoves();
     
-    if(basis.getTimer() <= 0 && alive){
-      basis.setC(color(255, 255, 0));
-    }
-    if(second.getTimer() <= 0 && alive2){
-      second.setC(color(200,0,100));
-    }
-    R.decreaseTimer();
-    G.decreaseTimer();
-    B.decreaseTimer();
-    if(R.getTimer() <= 0){
-      R.revive();
-    }
-    if(G.getTimer() <= 0){
-      G.revive();
-    }
-    if(B.getTimer() <= 0){
-      B.revive();
-    }
-    fill(255, 0, 0);
-    text("P1SCORE:" + getScore(), 30, 40);
-    text("P2SCORE:" + getScore2(), 400, 40);
-    fill(color(255, 215, 0));
-    //G.makeMove();
-    //B.makeMove();
-    //R.makeMove();
-  
-    // basis.checkOthers(game);
-    // System.out.println("xPos: " + xPos + " yPos: " + yPos);
-  
-    /*
-    background(255,0,0);
-    textFont(f, 16);
-    fill(255);
-    text(temp[0], 10, 100);
-    */
+      R.checkPac(basis);
+      G.checkPac(basis);
+      B.checkPac(basis);
     
-    second.checkMoves();
-    basis.checkMoves();
-  
-    R.checkPac(basis);
-    G.checkPac(basis);
-    B.checkPac(basis);
-  
-    R.checkPac(second);
-    G.checkPac(second);
-    B.checkPac(second);
-  
-    if(laze){
-      R.checkLaser(l);
-      G.checkLaser(l);
-      B.checkLaser(l);
-    }
-    if(laze2){
-      R.checkLaser(l2);
-      G.checkLaser(l2);
-      B.checkLaser(l2);
-    }
+      R.checkPac(second);
+      G.checkPac(second);
+      B.checkPac(second);
     
-    R.makeMove();
-    G.makeMove();
-    B.makeMove();
+      if(laze){
+        R.checkLaser(l);
+        G.checkLaser(l);
+        B.checkLaser(l);
+      }
+      if(laze2){
+        R.checkLaser(l2);
+        G.checkLaser(l2);
+        B.checkLaser(l2);
+      }
+      
+      R.makeMove();
+      G.makeMove();
+      B.makeMove();
+      }
+    else{
+      text("Haha loser you died", width/2 - 190, height/2 + 30);
+      text(getScore(), width/2 - 190, height/2 + 70);
+      //text(getScore2(), width/2 - 190, height/2 + 100);
+      }
     }
-  else{
-    text("Haha loser you died", width/2 - 190, height/2 + 30);
-    text(getScore(), width/2 - 190, height/2 + 70);
-    //text(getScore2(), width/2 - 190, height/2 + 100);
-    }
-  }
 else if (!twoscreen){
   if(!alive){
     file2.stop();
@@ -363,6 +365,8 @@ else if (!twoscreen){
   R.makeMove();
   G.makeMove();
   B.makeMove();
+  
+  basis.turn();
  
 }
 else{
@@ -391,7 +395,8 @@ public void keyPressed() {
     }
     
     else if (key == 'w' && Y > 10) {
-      basis.turn(0);
+      //basis.turn(0);
+      basis.direction = 0;
       
       xspeed = 0;
       yspeed = -SPEED;
@@ -399,13 +404,14 @@ public void keyPressed() {
       // basis.changeDirection(-HALF_PI);
       basis.checkMoves();
       
-      pushMatrix();
-      rotate(PI/2);
+      //pushMatrix();
+      //rotate(PI/2);
       //popMatrix();
     }
   
     else if (key == 'a' && X> 10) {
-      basis.turn(3);
+      //basis.turn(3);
+      basis.direction = 3;
       
       xspeed = -SPEED;
       yspeed = 0;
@@ -415,7 +421,8 @@ public void keyPressed() {
     }
   
     else if (key == 's' && Y < 590) {
-      basis.turn(2);
+      //basis.turn(2);
+      basis.direction = 2;
       
       xspeed = 0;
       yspeed = SPEED;
@@ -425,7 +432,8 @@ public void keyPressed() {
     }
   
     else if (key == 'd' && X < 590) {
-      basis.turn(1);
+      //basis.turn(1);
+      basis.direction = 1;
       
       xspeed = SPEED;
       yspeed = 0;
