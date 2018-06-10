@@ -30,7 +30,7 @@ public final int SPEED2 = 20;
 
 public void setup() {
   size(600, 600);
-  frameRate(10);
+  frameRate(7);
   
   //System.out.print(show(arr));
 
@@ -181,9 +181,9 @@ public void draw() {
   }
   basis.checkMoves();
   
-  //R.makeMove();
-  //G.makeMove();
- // B.makeMove();
+  R.makeMove();
+  G.makeMove();
+  B.makeMove();
 }
 else{
   text("Haha loser you died", width/2 - 190, height/2 + 30);
