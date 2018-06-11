@@ -269,7 +269,7 @@ public void draw() {
     
     int spot = 120;
     
-    text("High Scores", width / 2 - 190, 100);
+    //text("Previous Scores", width / 2 - 190, 100);
     
      for (int i = 0; i < 10 && i < result.length; i++) {
       text(result[i], width / 2 - 190, spot);
@@ -411,7 +411,7 @@ else{
     
     int spot = 120;
     
-    text("High Scores", width / 2 - 190, 100);
+    //text("Previous Scores", width / 2 - 190, 100);
     
      for (int i = 0; i < 10 && i < result.length; i++) {
       text(result[i], width / 2 - 190, spot);
