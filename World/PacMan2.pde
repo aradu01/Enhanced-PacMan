@@ -142,6 +142,9 @@ public class PacMan2 {
   public boolean getLaz(){
     return isLas2;
   }
+  public void oneUp(){
+    lives++;
+  }
   public void laserify(){
     isLas2 = true;
   }
@@ -161,7 +164,7 @@ public class PacMan2 {
       (Math.abs(X2 - third.getX()) < 30 && Math.abs(Y2- third.getY()) < 30 && first.getColor() != color(0,0,0))){
         c2 = color(0,0,0);
         lives--;
-        timer = 20;
+        timer = 50;
          return false;
       }
     }

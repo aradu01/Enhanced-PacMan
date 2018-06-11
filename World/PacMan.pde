@@ -157,6 +157,9 @@ public class PacMan {
       yspeed = 0;
     }
   }
+  public void oneUp(){
+    lives++;
+  }
   public boolean ghostDetection(Ghost first, Ghost second, Ghost third){
     if(c == color(255,255,0)){
     if((Math.abs(X - first.getX()) < 30 && Math.abs(Y- first.getY()) < 30 && first.getColor() != color(0,0,0)) ||
@@ -164,7 +167,7 @@ public class PacMan {
       (Math.abs(X - third.getX()) < 30 && Math.abs(Y- third.getY()) < 30) && third.getColor() != color(0,0,0)){
          c = color(0,0,0);
          lives--;
-         timer = 20;
+         timer = 50;
          return false;
       }
     }

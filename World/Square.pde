@@ -26,6 +26,10 @@ public class Square {
       P.laserify();
       file.play();
     }
+    if(c == color(0, 100, 215)){
+      file.play();
+      P.oneUp();
+    }
     if(c == color(100,100,215)){
       file.play();
       P.enrage();
@@ -47,6 +51,10 @@ public class Square {
       if(c == color(255, 215, 0)){
       P.laserify();
       file.play();
+    }
+    if(c == color(0, 100, 215)){
+      file.play();
+      P.oneUp();
     }
     if(c == color(100,100,215)){
       file.play();
