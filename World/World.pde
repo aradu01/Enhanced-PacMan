@@ -90,12 +90,12 @@ public void updateScore2(){
   score2+= 100;
 }
 
-public String getScore(){
-  return "" + score;
+public float getScore(){
+  return score;
 }
 
-public String getScore2(){
-  return "" + score2;
+public float getScore2(){
+  return score2;
 }
 
 public void draw() {  
@@ -265,7 +265,7 @@ public void draw() {
       result[index] = lines[index];
     }
     
-    result[result.length - 1] = getScore();
+    result[result.length - 1] = getScore() + getScore2() + "";
     
     saveStrings("Scores.txt", result);
 
@@ -410,7 +410,7 @@ else{
       result[index] = lines[index];
     }
     
-    result[result.length - 1] = getScore();
+    result[result.length - 1] = "" + getScore();
     
     saveStrings("Scores.txt", result);
 
