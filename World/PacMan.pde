@@ -1,5 +1,5 @@
 public float X = 30;
-public float Y = 30;
+public float Y = 50;
 public float xspeed = SPEED;
 public float yspeed = 0;
 public boolean isLas;

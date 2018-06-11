@@ -54,7 +54,7 @@ public void setup() {
   img = loadImage("Pac-man.png");
   imgD = loadImage("pac-man-game-over.jpg");
   f = createFont("Arial", 16, true);
-  textFont(f, 26);
+  textFont(f, 18);
   fill(255);
   
  // f = createFont("Arial", 16, true);
@@ -110,10 +110,12 @@ public void draw() {
     image(img, 0, 0, width, height);
     fill(255, 255, 255);
     text("PACMAN", width/2 - 60, height/2 - 230);
-    text("Press 'P' in order to start single player game", width/2 - 250, height/2 - 150 );
-    text("Press 'T' in order to start co-op game", width/2 - 220, height/2 + -100);
-    text("As P1, shoot laser (when powered up) with 'Q'", width/2 - 250, height/2 + 70);
-    text("As P2, shoot laser (when powered up) with 'L'", width/2 - 250, height/2 + 110);
+    text("Press 'P' in order to start single player game", width/2 - 200, height/2 - 150 );
+    text("Press 'T' in order to start co-op game", width/2 - 170, height/2 -100);
+    text("Blue pellet is 1-up, Gold pellet is Laser, Purple pellet is enrage", width/2 - 250, height/2 - 125);
+    text("As P1, shoot laser (when powered up) with 'Q'", width/2 - 210, height/2 + 70);
+    text("As P2, shoot laser (when powered up) with 'L'", width/2 - 210, height/2 + 110);
+    
     //text("Press 'T' in order to start co-op game", width/2 - 170, height/2 + 70);
   }
   else if (twoscreen){
@@ -203,8 +205,9 @@ public void draw() {
       B.revive();
     }
     fill(255, 0, 0);
-    text("P1SCORE:" + getScore(), 30, 40);
-    text("P2SCORE:" + getScore2(), 400, 40);
+    text("P1SCORE:" + getScore(), 30, 30);
+    text("P2SCORE:" + getScore2(), 400, 30);
+    text("LIFEPOOL:" + basis.getlives(), 220, 30);
     fill(color(255, 215, 0));
     //G.makeMove();
     //B.makeMove();
@@ -350,7 +353,8 @@ else if (!twoscreen){
     }
   }
   fill(255, 0, 0);
-  text("P1SCORE:" + getScore(), 30, 40);
+  text("P1SCORE:" + getScore(), 30, 30);
+  text("LIFEPOOL:" + basis.getlives(), 400, 30);
   fill(color(255, 215, 0));
   //G.makeMove();
   //B.makeMove();
@@ -444,6 +448,7 @@ public void keyPressed() {
       laze = true;
       l = new Laser(basis);
       l.display();
+      file6.play();
     }
     
     else if (key == 'w' && Y > 10) {
@@ -510,6 +515,7 @@ public void keyPressed() {
         laze2 = true;
         l2 = new Laser(second);
         l2.display();
+        file6.play();
       }
       
       else if(key == CODED){
