@@ -255,7 +255,7 @@ public void draw() {
     }
   else{
     image(imgD, 0, 0, width, height);
-    String[] lines = loadStrings("HighScores.txt");
+    String[] lines = loadStrings("Scores.txt");
     String[] result = new String[lines.length + 1];
     if(!dplayed){
       dplayed = true;
@@ -267,7 +267,7 @@ public void draw() {
     
     result[result.length - 1] = getScore();
     
-    saveStrings("HighScores.txt", result);
+    saveStrings("Scores.txt", result);
 
     delay(1000);
     
@@ -398,7 +398,7 @@ else if (!twoscreen){
 }
 else{
    image(imgD, 0, 0, width, height);
-    String[] lines = loadStrings("HighScores.txt");
+    String[] lines = loadStrings("Scores.txt");
     String[] result = new String[lines.length + 1];
     if(!dplayed){
       dplayed = true;
@@ -410,7 +410,7 @@ else{
     
     result[result.length - 1] = getScore();
     
-    saveStrings("HighScores.txt", result);
+    saveStrings("Scores.txt", result);
 
     delay(1000);
     
