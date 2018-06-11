@@ -40,7 +40,15 @@ public void setup() {
   //System.out.print(show(arr));
 
   game = new Square[30][30];
+  if(Math.random() < .33){
   mboy = new Maze("Sample2.txt");
+  }
+  else if(Math.random() < .66){
+   mboy = new Maze("Sample3.txt");
+  }
+  else{
+     mboy = new Maze("Sample4.txt");
+  }
   
   file1 = new SoundFile(this, "Pacman_Intro.wav");
   file2 = new SoundFile(this, "Pacman_Waka_Waka.wav");
