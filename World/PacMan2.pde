@@ -3,6 +3,7 @@ public float Y2 = 30;
 public float xspeed2 = SPEED2;
 public float yspeed2 = 0;
 public boolean isLas2;
+public float direction2;
 //public float lives2;
 
 public class PacMan2 {

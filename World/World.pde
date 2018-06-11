@@ -309,7 +309,7 @@ else if (!twoscreen){
     l2.move();
   }
   basis.pacManSetUp();
-  
+  basis.turn();
   R.ghostSetUp();
   G.ghostSetUp();
   B.ghostSetUp();
@@ -430,85 +430,132 @@ public void keyPressed() {
       twoscreen = true;
     }
   }
-  else if(alive){
-  if(key == 'q' && las){
-    laze = true;
-    l = new Laser(basis);
-    l.display();
-    file6.play();
-  }
-  else if (key == 'w' && Y > 10) {
-    xspeed = 0;
-    yspeed = -SPEED;
-    
-    // basis.changeDirection(-HALF_PI);
-    basis.checkMoves();
-  }
-  
-  else if (key == 'a' && X> 10) {
-    xspeed = -SPEED;
-    yspeed = 0;
-    
-    // basis.changeDirection(PI);
-    basis.checkMoves();
-  }
-  
-  else if (key == 's' && Y < 590) {
-    xspeed = 0;
-    yspeed = SPEED;
-    
-    // basis.changeDirection(HALF_PI);
-    basis.checkMoves();
-  }
-  
-  else if (key == 'd' && X < 590) {
-    xspeed = SPEED;
-    yspeed = 0;
-    
-    // basis.changeDirection(0);
-    basis.checkMoves();
-  }
-  if(twoscreen && (alive || alive2)){
-    if(key == 'l' && las2){
-    laze2 = true;
-    l2 = new Laser(second);
-    l2.display();
-    file6.play();
+  else{
+    if(key == 'q' && las){
+      laze = true;
+      l = new Laser(basis);
+      l.display();
     }
-    else if(key == CODED){
-    if (keyCode == UP && Y2 > 10) {
-    xspeed2 = 0;
-    yspeed2 = -SPEED2;
     
-    // basis.changeDirection(-HALF_PI);
-    second.checkMoves();
-  }
+    else if (key == 'w' && Y > 10) {
+      //basis.turn(0);
+      if (game[(int) (X / 20)][(int) ((Y - SPEED) / 20)].getColor() != color(0, 0, 255)) {
+        basis.direction = 0;
+        
+        xspeed = 0;
+        yspeed = -SPEED;
+      
+        // basis.changeDirection(-HALF_PI);
+        basis.checkMoves();
+      }
+      
+      //pushMatrix();
+      //rotate(PI/2);
+      //popMatrix();
+    }
   
-  else if (keyCode == LEFT && X2 > 10) {
-    xspeed2 = -SPEED2;
-    yspeed2 = 0;
-    
-    // basis.changeDirection(PI);
-    second.checkMoves();
-  }
+    else if (key == 'a' && X> 10) {
+      //basis.turn(3);
+      
+      if (game[(int) ((X - SPEED) / 20)][(int) (Y / 20)].getColor() != color(0, 0, 255)) {
+        basis.direction = 3;
+        
+        xspeed = -SPEED;
+        yspeed = 0;
+      
+        // basis.changeDirection(PI);
+        basis.checkMoves();
+      }
+    }
   
-  else if (keyCode == DOWN && Y2 < 590) {
-    xspeed2 = 0;
-    yspeed2 = SPEED2;
-    
-    // basis.changeDirection(HALF_PI);
-    second.checkMoves();
-  }
+    else if (key == 's' && Y < 590) {
+      //basis.turn(2);
+      
+      if (game[(int) (X / 20)][(int) ((Y + SPEED) / 20)].getColor() != color(0, 0, 255)) {
+        basis.direction = 2;
+        
+        xspeed = 0;
+        yspeed = SPEED;
+      
+        // basis.changeDirection(HALF_PI);
+        basis.checkMoves();
+      }
+    }
   
-  else if (keyCode == RIGHT && X2 < 590) {
-    xspeed2 = SPEED2;
-    yspeed2 = 0;
+    else if (key == 'd' && X < 590) {
+      //basis.turn(1);
+      if (game[(int) ((X + SPEED) / 20)][(int) (Y / 20)].getColor() != color(0, 0, 255)) {
+        basis.direction = 1;
+        
+        xspeed = SPEED;
+        yspeed = 0;
+        
+        // basis.changeDirection(0);
+        basis.checkMoves();
+      }
+    }
     
-    // basis.changeDirection(0);
-    second.checkMoves();
-  }
-  }
-  }
+    if(twoscreen){
+      
+      if(key == 'l' && las2){
+        laze2 = true;
+        l2 = new Laser(second);
+        l2.display();
+      }
+      
+      else if(key == CODED){
+        if (keyCode == UP && Y2 > 10) {
+                if (game[(int) (X2 / 20)][(int) ((Y2 - SPEED) / 20)].getColor() != color(0, 0, 255)) {
+          //second.direction2 = 0;
+          
+          xspeed2 = 0;
+          yspeed2 = -SPEED2;
+      
+          // basis.changeDirection(-HALF_PI);
+          second.checkMoves();
+        }
+        }
+  
+        else if (keyCode == LEFT && X2 > 10) {
+                if (game[(int) ((X2 - SPEED) / 20)][(int) (Y2 / 20)].getColor() != color(0, 0, 255)) {
+
+          //second.direction2 = 3;
+          
+          xspeed2 = -SPEED2;
+          yspeed2 = 0;
+          
+          // basis.changeDirection(PI);
+          second.checkMoves();
+        }
+        }
+  
+        else if (keyCode == DOWN && Y2 < 590) {
+                if (game[(int) (X2 / 20)][(int) ((Y2 + SPEED) / 20)].getColor() != color(0, 0, 255)) {
+
+          //second.direction2 = 2;
+          
+          xspeed2 = 0;
+          yspeed2 = SPEED2;
+          
+          // basis.changeDirection(HALF_PI);
+          second.checkMoves();
+                }
+        }
+        
+        else if (keyCode == RIGHT && X2 < 590) {
+                if (game[(int) ((X2 + SPEED) / 20)][(int) (Y2 / 20)].getColor() != color(0, 0, 255)) {
+
+          //second.direction2 = 1;
+          
+          xspeed2 = SPEED2;
+          yspeed2 = 0;
+          
+          // basis.changeDirection(0);
+          second.checkMoves();
+        }
+        }
+      }
+    }
   }
 
 }
