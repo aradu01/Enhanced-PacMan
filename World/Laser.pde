@@ -5,11 +5,11 @@ public class Laser{
     x = P.x();
     y = P.y();
     if(P.xspeed() == 0 && P.yspeed()== 0){
-      xlspeed = 40;
+      xlspeed = 60;
     }
     else{
-    xlspeed = 2 *P.xspeed();
-    ylspeed = 2 *P.yspeed();
+    xlspeed = 3 *P.xspeed();
+    ylspeed = 3 *P.yspeed();
 
     }
   }

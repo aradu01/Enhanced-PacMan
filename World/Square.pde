@@ -13,7 +13,6 @@ public class Square {
     yactual = y * 20;
     isRect = rect;
   }
-  
   public boolean checkPac(PacMan P, SoundFile file){
     if(c == color(0,0,0) || P.getcolor() == color(0,0,0)){
       return false;
@@ -85,19 +84,15 @@ public class Square {
   public color getColor() {
     return c;
   }
-  
   public void setColor(color c){
     this.c = c;
   }
-  
   public float getActX(){
     return xactual;
   }
-  
   public float getActY(){
     return yactual;
   }
-  
   public boolean getRect(){
     return isRect;
   }

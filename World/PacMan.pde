@@ -9,7 +9,6 @@ public class PacMan {
    public void decreaseTimer(){
     timer--;
   }
-  
   public float getTimer(){
     return timer;
   }
@@ -83,171 +82,13 @@ public class PacMan {
   private float upper = TWO_PI - QUARTER_PI; // + rotating;
   private float increment = .1;
   
-  public int direction = 1;
-  
   public void enrage(){
     c = color(255, 0, 0);
     timer = 50;
   }
-  
-  public void turn() {
-    //pushMatrix();
-    //translate(X, Y);
-    
-    if (direction == 0) {
-      translate(X, Y);
-      
-      /*
-      if (value == 0) {
-        fill(c);
-        arc(X, Y, 20, 20, lower, upper);
-      }
-      
-      else if (value == 1) {
-        pushMatrix();
-        rotate(PI/2);
-        fill(c);
-        arc(X, Y, 20, 20, lower, upper);
-        popMatrix();
-      }
-      
-      else if (value == 2) {
-        pushMatrix();
-        rotate(PI);
-        fill(c);
-        arc(X, Y, 20, 20, lower, upper);
-        popMatrix();
-      }
-      
-      else if (value == 3) {
-        pushMatrix();
-        rotate(PI + PI / 2);
-        fill(c);
-        arc(X, Y, 20, 20, lower, upper);
-        popMatrix();
-      }
-      */
-      
-      rotate(PI + PI/2);
-      fill(c);
-      arc(0, 0, 20, 20, lower, upper);
-
-      resetMatrix();
-    }
-    
-    else if (direction == 1) {
-      /*
-      if (value == 0) {
-        pushMatrix();
-        rotate(PI + PI/2);
-        fill(c);
-        arc(X, Y, 20, 20, lower, upper);
-        popMatrix();
-      }
-      
-      else if (value == 2) {
-        pushMatrix();
-        rotate(PI/2);
-        fill(c);
-        arc(X, Y, 20, 20, lower, upper);
-        popMatrix();
-      }
-      
-      else if (value == 3) {
-        pushMatrix();
-        rotate(PI);
-        fill(c);
-        arc(X, Y, 20, 20, lower, upper);
-        popMatrix();
-      }
-      */
-      
-      fill(c);
-      arc(X, Y, 20, 20, lower, upper);
-    }
-    
-    else if (direction == 2) {
-      translate(X, Y);
-      
-      /*
-      if (value == 0) {
-        pushMatrix();
-        rotate(PI);
-        fill(c);
-        arc(X, Y, 20, 20, lower, upper);
-        popMatrix();
-      }
-      
-      else if (value == 1) {
-        pushMatrix();
-        rotate(PI + PI/2);
-        fill(c);
-        arc(X, Y, 20, 20, lower, upper);
-        popMatrix();
-      }
-      
-      else if (value == 3) {
-        pushMatrix();
-        rotate(PI / 2);
-        fill(c);
-        arc(X, Y, 20, 20, lower, upper);
-        popMatrix();
-      }
-      */
-      
-      
-      rotate(PI/2);
-      fill(c);
-      arc(0, 0, 20, 20, lower, upper);
-
-      resetMatrix();
-    }
-    
-    else if (direction == 3) {
-      translate(X, Y);
-      
-      /*
-      if (value == 0) {
-        pushMatrix();
-        rotate(PI/2);
-        fill(c);
-        arc(X, Y, 20, 20, lower, upper);
-        popMatrix();
-      }
-      
-      else if (value == 1) {
-        pushMatrix();
-        rotate(PI);
-        fill(c);
-        arc(X, Y, 20, 20, lower, upper);
-        popMatrix();
-      }
-      
-      else if (value == 2) {
-        pushMatrix();
-        rotate(PI + PI / 2);
-        fill(c);
-        arc(X, Y, 20, 20, lower, upper);
-        popMatrix();
-      }
-      */
-      
-      
-      rotate(PI);
-      fill(c);
-      arc(0, 0, 20, 20, lower, upper);
-
-      resetMatrix();
-    }
-    
-    //direction = value;
-    
-    //translate(0, 0);
-    //popMatrix();
-  }
-  
   public void pacManSetUp() {
-    //turn(0);
+    fill(c);
+    arc(X, Y, 20, 20, lower, upper);
     
     /*
     if (abs(lower - upper) > PI) {
@@ -312,7 +153,6 @@ public class PacMan {
       yspeed = 0;
     }
   }
-  
   public boolean ghostDetection(Ghost first, Ghost second, Ghost third){
     if(c == color(255,255,0)){
     if((Math.abs(X - first.getX()) < 30 && Math.abs(Y- first.getY()) < 30 && first.getColor() != color(0,0,0)) ||
@@ -323,6 +163,5 @@ public class PacMan {
       }
     }
       return true;
-  }
-
 }
+    }
