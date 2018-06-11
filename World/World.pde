@@ -111,9 +111,11 @@ public void draw() {
     fill(255, 255, 255);
     text("PACMAN", width/2 - 60, height/2 - 230);
     text("Press 'P' in order to start single player game", width/2 - 200, height/2 - 150 );
-    text("Press 'T' in order to start co-op game", width/2 - 170, height/2 + -100);
+    text("Press 'T' in order to start co-op game", width/2 - 170, height/2 -100);
+    text("Blue pellet is 1-up, Gold pellet is Laser, Purple pellet is enrage", width/2 - 250, height/2 - 125);
     text("As P1, shoot laser (when powered up) with 'Q'", width/2 - 210, height/2 + 70);
     text("As P2, shoot laser (when powered up) with 'L'", width/2 - 210, height/2 + 110);
+    
     //text("Press 'T' in order to start co-op game", width/2 - 170, height/2 + 70);
   }
   else if (twoscreen){
