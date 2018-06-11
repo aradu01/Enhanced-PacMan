@@ -263,7 +263,7 @@ public void draw() {
     }
   else{
     image(imgD, 0, 0, width, height);
-    String[] lines = loadStrings("Scores.txt");
+    String[] lines = loadStrings("SavedScores.txt");
     String[] result = new String[lines.length + 1];
     if(!dplayed){
       dplayed = true;
@@ -275,7 +275,7 @@ public void draw() {
     
     result[result.length - 1] = getScore();
     
-    saveStrings("Scores.txt", result);
+    saveStrings("SavedScores.txt", result);
 
     delay(1000);
     
@@ -284,11 +284,14 @@ public void draw() {
     //text("Previous Scores", width / 2 - 190, 100);
     
      for (int i = 0; i < 10 && i < result.length; i++) {
+       fill(255, 255, 0);
       text(result[i], width / 2 - 190, spot);
       
       spot += 20;
     }
     //delay(5000);
+    
+    frameRate(0);
 }
 }
 else if (!twoscreen){
@@ -406,7 +409,7 @@ else if (!twoscreen){
 }
 else{
    image(imgD, 0, 0, width, height);
-    String[] lines = loadStrings("Scores.txt");
+    String[] lines = loadStrings("SavedScores.txt");
     String[] result = new String[lines.length + 1];
     if(!dplayed){
       dplayed = true;
@@ -418,7 +421,7 @@ else{
     
     result[result.length - 1] = getScore();
     
-    saveStrings("Scores.txt", result);
+    saveStrings("SavedScores.txt", result);
 
     delay(1000);
     
@@ -427,11 +430,14 @@ else{
     //text("Previous Scores", width / 2 - 190, 100);
     
      for (int i = 0; i < 10 && i < result.length; i++) {
+       fill(255, 255, 0);
       text(result[i], width / 2 - 190, spot);
       
       spot += 20;
     }
     //delay(5000);
+    
+    frameRate(0);
 }
 }
 }
