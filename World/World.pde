@@ -222,6 +222,9 @@ public void draw() {
     
     second.checkMoves();
     basis.checkMoves();
+    basis.turn();
+    second.turn2();
+    
   
     R.checkPac(basis);
     G.checkPac(basis);
@@ -506,7 +509,7 @@ public void keyPressed() {
       else if(key == CODED){
         if (keyCode == UP && Y2 > 10) {
                 if (game[(int) (X2 / 20)][(int) ((Y2 - SPEED) / 20)].getColor() != color(0, 0, 255)) {
-          //second.direction2 = 0;
+          second.direction2 = 0;
           
           xspeed2 = 0;
           yspeed2 = -SPEED2;
@@ -519,7 +522,7 @@ public void keyPressed() {
         else if (keyCode == LEFT && X2 > 10) {
                 if (game[(int) ((X2 - SPEED) / 20)][(int) (Y2 / 20)].getColor() != color(0, 0, 255)) {
 
-          //second.direction2 = 3;
+          second.direction2 = 3;
           
           xspeed2 = -SPEED2;
           yspeed2 = 0;
@@ -532,7 +535,7 @@ public void keyPressed() {
         else if (keyCode == DOWN && Y2 < 590) {
                 if (game[(int) (X2 / 20)][(int) ((Y2 + SPEED) / 20)].getColor() != color(0, 0, 255)) {
 
-          //second.direction2 = 2;
+          second.direction2 = 2;
           
           xspeed2 = 0;
           yspeed2 = SPEED2;
@@ -545,12 +548,12 @@ public void keyPressed() {
         else if (keyCode == RIGHT && X2 < 590) {
                 if (game[(int) ((X2 + SPEED) / 20)][(int) (Y2 / 20)].getColor() != color(0, 0, 255)) {
 
-          //second.direction2 = 1;
+          second.direction2 = 1;
           
           xspeed2 = SPEED2;
           yspeed2 = 0;
           
-          // basis.changeDirection(0);
+          //basis.changeDirection(0);
           second.checkMoves();
         }
         }
