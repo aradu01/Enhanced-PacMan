@@ -1,7 +1,6 @@
 public class Laser{
   public float x,y, xlspeed, ylspeed;
   public Laser(PacMan P){
-    
     x = P.x();
     y = P.y();
     if(P.xspeed() == 0 && P.yspeed()== 0){
@@ -10,7 +9,6 @@ public class Laser{
     else{
     xlspeed = 3 *P.xspeed();
     ylspeed = 3 *P.yspeed();
-
     }
   }
    public Laser(PacMan2 P){
