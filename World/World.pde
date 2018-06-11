@@ -120,7 +120,7 @@ public void draw() {
   }
   else if (twoscreen){
     
-    if(basis.getlives() <= 0){
+    if(second.getlives() <= 0){
     file2.stop();
   }
     if(!basis.ghostDetection(G, B, R)){
@@ -253,6 +253,7 @@ public void draw() {
     B.makeMove();
     }
   else{
+    file2.stop();
     image(imgD, 0, 0, width, height);
     String[] lines = loadStrings("Scores.txt");
     String[] result = new String[lines.length + 1];
@@ -444,7 +445,7 @@ public void keyPressed() {
     }
   }
   else{
-    if(key == 'q' && las){
+    if(key == 'q' && las && basis.getcolor() != color(0,0,0)){
       laze = true;
       l = new Laser(basis);
       l.display();
@@ -511,7 +512,7 @@ public void keyPressed() {
     
     if(twoscreen){
       
-      if(key == 'l' && las2){
+      if(key == 'l' && las2 && second.getcolor() != color(0,0,0)){
         laze2 = true;
         l2 = new Laser(second);
         l2.display();
