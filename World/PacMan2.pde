@@ -3,6 +3,7 @@ public float Y2 = 30;
 public float xspeed2 = SPEED2;
 public float yspeed2 = 0;
 public boolean isLas2;
+public float lives2;
 
 public class PacMan2 {
    public float timer;
@@ -11,6 +12,9 @@ public class PacMan2 {
   }
   public float getTimer(){
     return timer;
+  }
+  public float getlives(){
+    return lives2;
   }
   
   public color c2 = color(200, 0, 100);

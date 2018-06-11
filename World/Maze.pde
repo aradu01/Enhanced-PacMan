@@ -22,6 +22,9 @@ public class Maze{
          else if (arr[r][c] == '$'){
           game[c][r] = new Square(c * 20, r * 20, color(100, 100, 215), false);
         }
+        else if (arr[r][c] == '%'){
+          game[c][r] = new Square(c * 20, r * 20, color(0, 100, 215), false);
+        }
         else if (arr[r][c] == '@'){
           game[c][r] = new Square(c * 20, r * 20, color(255, 215, 0), false);
         }

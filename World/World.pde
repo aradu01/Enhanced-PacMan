@@ -24,6 +24,7 @@ public boolean alive = true;
 public boolean alive2 = true;
 public boolean al1 = true;
 public boolean al2 = true;
+public boolean dplayed;
 //public float timerR, timerG, timerB, timerP1, timerP2;
 PImage img;
 PImage imgD;
@@ -43,10 +44,10 @@ public void setup() {
   
   file1 = new SoundFile(this, "Pacman_Intro.wav");
   file2 = new SoundFile(this, "Pacman_Waka_Waka.wav");
-  file3 = new SoundFile(this, "pacman_death.wav");
+  file3 = new SoundFile(this, "Pacman-death-sound.mp3");
   file4 = new SoundFile(this, "pacman_eatfruit.wav");
   file5 = new SoundFile(this, "pacman_eatghost.wav");
-  file6 = new SoundFile(this, "pacman_intermission.wav");
+  file6 = new SoundFile(this, "151020__bubaproducer__laser-shot-big-4.wav");
   file1.play();
   
   mboy.mazeSetUp(game);
@@ -252,7 +253,10 @@ public void draw() {
     image(imgD, 0, 0, width, height);
     String[] lines = loadStrings("HighScores.txt");
     String[] result = new String[lines.length + 1];
+    if(!dplayed){
+      dplayed = true;
     file3.play();
+    }
     for (int index = 0; index < lines.length; index++) {
       result[index] = lines[index];
     }
@@ -391,7 +395,10 @@ else{
    image(imgD, 0, 0, width, height);
     String[] lines = loadStrings("HighScores.txt");
     String[] result = new String[lines.length + 1];
+    if(!dplayed){
+      dplayed = true;
     file3.play();
+    }
     for (int index = 0; index < lines.length; index++) {
       result[index] = lines[index];
     }
@@ -426,11 +433,12 @@ public void keyPressed() {
       twoscreen = true;
     }
   }
-  else{
+  else if(alive){
   if(key == 'q' && las){
     laze = true;
     l = new Laser(basis);
     l.display();
+    file6.play();
   }
   else if (key == 'w' && Y > 10) {
     xspeed = 0;
@@ -463,11 +471,12 @@ public void keyPressed() {
     // basis.changeDirection(0);
     basis.checkMoves();
   }
-  if(twoscreen){
+  if(twoscreen && (alive || alive2)){
     if(key == 'l' && las2){
     laze2 = true;
     l2 = new Laser(second);
     l2.display();
+    file6.play();
     }
     else if(key == CODED){
     if (keyCode == UP && Y2 > 10) {

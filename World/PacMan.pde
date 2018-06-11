@@ -3,11 +3,15 @@ public float Y = 30;
 public float xspeed = SPEED;
 public float yspeed = 0;
 public boolean isLas;
+public float lives;
 
 public class PacMan {
   public float timer;
    public void decreaseTimer(){
     timer--;
+  }
+  public float getlives(){
+    return lives;
   }
   public float getTimer(){
     return timer;
