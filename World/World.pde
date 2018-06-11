@@ -26,6 +26,7 @@ public boolean al1 = true;
 public boolean al2 = true;
 //public float timerR, timerG, timerB, timerP1, timerP2;
 PImage img;
+PImage imgD;
 public SoundFile file1, file2, file3, file4, file5, file6;;
 
 public final int SPEED = 20;
@@ -50,6 +51,7 @@ public void setup() {
   
   mboy.mazeSetUp(game);
   img = loadImage("Pac-man.png");
+  imgD = loadImage("pac-man-game-over.jpg");
   f = createFont("Arial", 16, true);
   textFont(f, 26);
   fill(255);
@@ -247,10 +249,31 @@ public void draw() {
     B.makeMove();
     }
   else{
-    text("Haha loser you died", width/2 - 190, height/2 + 30);
-    text(getScore(), width/2 - 190, height/2 + 70);
-    //text(getScore2(), width/2 - 190, height/2 + 100);
+    image(imgD, 0, 0, width, height);
+    String[] lines = loadStrings("HighScores.txt");
+    String[] result = new String[lines.length + 1];
+    file3.play();
+    for (int index = 0; index < lines.length; index++) {
+      result[index] = lines[index];
     }
+    
+    result[result.length - 1] = getScore();
+    
+    saveStrings("HighScores.txt", result);
+
+    delay(1000);
+    
+    int spot = 120;
+    
+    text("High Scores", width / 2 - 190, 100);
+    
+     for (int i = 0; i < 10 && i < result.length; i++) {
+      text(result[i], width / 2 - 190, spot);
+      
+      spot += 20;
+    }
+    //delay(5000);
+}
   }
 else if (!twoscreen){
   if(!alive){
@@ -365,9 +388,30 @@ else if (!twoscreen){
  
 }
 else{
-  text("Haha loser you died", width/2 - 190, height/2 + 30);
-  text(getScore(), width/2 - 190, height/2 + 70);
-  //text(getScore2(), width/2 - 190, height/2 + 100);
+   image(imgD, 0, 0, width, height);
+    String[] lines = loadStrings("HighScores.txt");
+    String[] result = new String[lines.length + 1];
+    file3.play();
+    for (int index = 0; index < lines.length; index++) {
+      result[index] = lines[index];
+    }
+    
+    result[result.length - 1] = getScore();
+    
+    saveStrings("HighScores.txt", result);
+
+    delay(1000);
+    
+    int spot = 120;
+    
+    text("High Scores", width / 2 - 190, 100);
+    
+     for (int i = 0; i < 10 && i < result.length; i++) {
+      text(result[i], width / 2 - 190, spot);
+      
+      spot += 20;
+    }
+    //delay(5000);
 }
 }
 }
