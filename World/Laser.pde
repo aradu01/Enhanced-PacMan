@@ -1,14 +1,16 @@
 public class Laser{
   public float x,y, xlspeed, ylspeed;
   public Laser(PacMan P){
+    
     x = P.x();
     y = P.y();
     if(P.xspeed() == 0 && P.yspeed()== 0){
-      xlspeed = 60;
+      xlspeed = 40;
     }
     else{
-    xlspeed = 3 *P.xspeed();
-    ylspeed = 3 *P.yspeed();
+    xlspeed = 2 *P.xspeed();
+    ylspeed = 2 *P.yspeed();
+
     }
   }
    public Laser(PacMan2 P){
