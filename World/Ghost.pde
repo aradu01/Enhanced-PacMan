@@ -1,5 +1,4 @@
 public class Ghost {
-  
   protected int ghostX;
   protected int ghostY;
   protected color ghostTint;
@@ -38,6 +37,7 @@ public class Ghost {
     if(Math.abs(ghostX - P.x()) < 30 && Math.abs(ghostY - P.y()) < 30){
       c = cd;
       timer = 15;
+      oof.play();
     }
     }
   }
@@ -46,6 +46,7 @@ public class Ghost {
     if(Math.abs(ghostX - P.x()) < 30 && Math.abs(ghostY - P.y()) < 30){
       c = cd;
       timer = 15;
+      oof.play();
     }
     }
   }
@@ -56,6 +57,7 @@ public class Ghost {
     if(Math.abs(ghostX - P.x()) < 30 && Math.abs(ghostY - P.y()) < 30){
       c = cd;
       timer = 15;
+      oof.play();
     }
   }
   private int[][] getMoves(int xcor, int ycor) {

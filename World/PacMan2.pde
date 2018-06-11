@@ -166,6 +166,7 @@ public class PacMan2 {
         c2 = color(0,0,0);
         lives--;
         timer = 50;
+        oof.play();
          return false;
       }
     }

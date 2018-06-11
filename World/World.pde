@@ -1,6 +1,5 @@
 import java.util.*;
 import processing.sound.*;
-
 public Ghost monster = new Ghost();
 public GreenGhost G = new GreenGhost();
 public BlueGhost B = new BlueGhost();
@@ -9,6 +8,7 @@ public RedGhost R = new RedGhost();
 public Maze mboy;
 public Square[][] game;
 
+public SoundFile oof;
 public ArrayList<Square> checked = new ArrayList<Square>();
 public PacMan basis = new PacMan();
 public PacMan2 second = new PacMan2();
@@ -48,13 +48,14 @@ public void setup() {
   file4 = new SoundFile(this, "pacman_eatfruit.wav");
   file5 = new SoundFile(this, "pacman_eatghost.wav");
   file6 = new SoundFile(this, "151020__bubaproducer__laser-shot-big-4.wav");
+  oof = new SoundFile(this, "roblox-death-sound-effect.mp3");
   file1.play();
   
   mboy.mazeSetUp(game);
   img = loadImage("Pac-man.png");
   imgD = loadImage("pac-man-game-over.jpg");
   f = createFont("Arial", 16, true);
-  textFont(f, 26);
+  textFont(f, 18);
   fill(255);
   
  // f = createFont("Arial", 16, true);
@@ -110,10 +111,12 @@ public void draw() {
     image(img, 0, 0, width, height);
     fill(255, 255, 255);
     text("PACMAN", width/2 - 60, height/2 - 230);
-    text("Press 'P' in order to start single player game", width/2 - 250, height/2 - 150 );
-    text("Press 'T' in order to start co-op game", width/2 - 220, height/2 + -100);
-    text("As P1, shoot laser (when powered up) with 'Q'", width/2 - 250, height/2 + 70);
-    text("As P2, shoot laser (when powered up) with 'L'", width/2 - 250, height/2 + 110);
+    text("Press 'P' in order to start single player game", width/2 - 200, height/2 - 150 );
+    text("Press 'T' in order to start co-op game", width/2 - 170, height/2 -100);
+    text("Blue pellet is 1-up, Gold pellet is Laser, Purple pellet is enrage", width/2 - 250, height/2 - 125);
+    text("As P1, shoot laser (when powered up) with 'Q'", width/2 - 210, height/2 + 70);
+    text("As P2, shoot laser (when powered up) with 'L'", width/2 - 210, height/2 + 110);
+    
     //text("Press 'T' in order to start co-op game", width/2 - 170, height/2 + 70);
   }
   else if (twoscreen){
@@ -203,8 +206,9 @@ public void draw() {
       B.revive();
     }
     fill(255, 0, 0);
-    text("P1SCORE:" + getScore(), 30, 40);
-    text("P2SCORE:" + getScore2(), 400, 40);
+    text("P1SCORE:" + getScore(), 30, 30);
+    text("P2SCORE:" + getScore2(), 400, 30);
+    text("LIFEPOOL:" + basis.getlives(), 220, 30);
     fill(color(255, 215, 0));
     //G.makeMove();
     //B.makeMove();
@@ -251,20 +255,19 @@ public void draw() {
     }
   else{
     image(imgD, 0, 0, width, height);
-    String[] lines = loadStrings("Scores.txt");
+    String[] lines = loadStrings("HighScores.txt");
     String[] result = new String[lines.length + 1];
     if(!dplayed){
       dplayed = true;
-      file3.play();
+    file3.play();
     }
-    
     for (int index = 0; index < lines.length; index++) {
       result[index] = lines[index];
     }
     
     result[result.length - 1] = getScore();
     
-    saveStrings("Scores.txt", result);
+    saveStrings("HighScores.txt", result);
 
     delay(1000);
     
@@ -278,7 +281,6 @@ public void draw() {
       spot += 20;
     }
     //delay(5000);
-    frameRate(0);
 }
 }
 else if (!twoscreen){
@@ -350,7 +352,8 @@ else if (!twoscreen){
     }
   }
   fill(255, 0, 0);
-  text("P1SCORE:" + getScore(), 30, 40);
+  text("P1SCORE:" + getScore(), 30, 30);
+  text("LIFEPOOL:" + basis.getlives(), 400, 30);
   fill(color(255, 215, 0));
   //G.makeMove();
   //B.makeMove();
@@ -395,12 +398,11 @@ else if (!twoscreen){
 }
 else{
    image(imgD, 0, 0, width, height);
-   
-    String[] lines = loadStrings("Scores.txt");
+    String[] lines = loadStrings("HighScores.txt");
     String[] result = new String[lines.length + 1];
     if(!dplayed){
       dplayed = true;
-      file3.play();
+    file3.play();
     }
     for (int index = 0; index < lines.length; index++) {
       result[index] = lines[index];
@@ -408,7 +410,7 @@ else{
     
     result[result.length - 1] = getScore();
     
-    saveStrings("Scores.txt", result);
+    saveStrings("HighScores.txt", result);
 
     delay(1000);
     
@@ -416,15 +418,12 @@ else{
     
     //text("Previous Scores", width / 2 - 190, 100);
     
-     for (int i = 0; i < result.length; i++) {
+     for (int i = 0; i < 10 && i < result.length; i++) {
       text(result[i], width / 2 - 190, spot);
       
       spot += 20;
     }
-    
     //delay(5000);
-    frameRate(0);
-    
 }
 }
 }
@@ -444,6 +443,7 @@ public void keyPressed() {
       laze = true;
       l = new Laser(basis);
       l.display();
+      file6.play();
     }
     
     else if (key == 'w' && Y > 10) {
@@ -510,6 +510,7 @@ public void keyPressed() {
         laze2 = true;
         l2 = new Laser(second);
         l2.display();
+        file6.play();
       }
       
       else if(key == CODED){
