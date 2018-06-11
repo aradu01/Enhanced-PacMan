@@ -7,7 +7,7 @@ To emulate the renowned Pac-Man arcade game, while adding some tweaks.  We've in
 # Controls
 For one player, use the WASD keys.
 For two players, one should use the WASD keys and the other should use the arrow keys.
-When one has the laser powerup, player one should press Q in order to fire the laser, and player two should press L in order to do the same.
+When one has the laser powerup, player one should press Q in order to fire the laser, and player two should press L in order to do the same. Be careful when firing the laser, for its great power goes through everything: ghosts and even walls too.
 
 # Changes
 We've been able to make the Pac-Man icon rotate when it changes direction, including the opening and the closing of its mouth.
