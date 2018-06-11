@@ -447,7 +447,7 @@ public void keyPressed() {
     }
   }
   else{
-    if(key == 'q' && las){
+    if(key == 'q' && las  && basis.getcolor() != color(0,0,0)){
       laze = true;
       l = new Laser(basis);
       l.display();
@@ -514,7 +514,7 @@ public void keyPressed() {
     
     if(twoscreen){
       
-      if(key == 'l' && las2){
+      if(key == 'l' && las2 && second.getcolor() != color(0,0,0)){
         laze2 = true;
         l2 = new Laser(second);
         l2.display();
