@@ -3,7 +3,7 @@ public float Y2 = 30;
 public float xspeed2 = SPEED2;
 public float yspeed2 = 0;
 public boolean isLas2;
-public float lives2;
+//public float lives2;
 
 public class PacMan2 {
    public float timer;
@@ -14,7 +14,7 @@ public class PacMan2 {
     return timer;
   }
   public float getlives(){
-    return lives2;
+    return lives;
   }
   
   public color c2 = color(200, 0, 100);
@@ -160,6 +160,8 @@ public class PacMan2 {
       (Math.abs(X2 - second.getX()) < 30 && Math.abs(Y2- second.getY()) < 30 && first.getColor() != color(0,0,0)) || 
       (Math.abs(X2 - third.getX()) < 30 && Math.abs(Y2- third.getY()) < 30 && first.getColor() != color(0,0,0))){
         c2 = color(0,0,0);
+        lives--;
+        timer = 20;
          return false;
       }
     }

@@ -118,7 +118,7 @@ public void draw() {
   }
   else if (twoscreen){
     
-    if(!alive && !alive2){
+    if(basis.getlives() <= 0){
     file2.stop();
   }
     if(!basis.ghostDetection(G, B, R)){
@@ -127,10 +127,7 @@ public void draw() {
     if(!second.ghostDetection(G, B, R)){
       al2 = false;
     }
-    if(alive || alive2){
-      alive = al1;
-      alive2 = al2;
-      
+    if(basis.getlives() > 0){
     for (Square[] row: game) {
       for (Square block: row) {
       // System.out.println(block.xcor() + " " + block.ycor())
@@ -278,12 +275,12 @@ public void draw() {
     }
     //delay(5000);
 }
-  }
+}
 else if (!twoscreen){
-  if(!alive){
+  if(basis.getlives() <= 0){
     file2.stop();
   }
-  if (alive){
+  if (basis.getlives() > 0){
   alive = basis.ghostDetection(G, B, R);
   for (Square[] row: game) {
     for (Square block: row) {
